@@ -89,6 +89,17 @@
       background-color: #ff00ff;
       animation: confetti-fall 5s linear infinite;
     }
+    .age-restriction {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(255, 0, 0, 0.8);
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      color: #fff;
+      z-index: 1000;
+    }
     @keyframes flicker {
       0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
@@ -127,6 +138,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="age-restriction">18+</div>
   <div class="container">
     <!-- Homepage -->
     <div id="homepage">
