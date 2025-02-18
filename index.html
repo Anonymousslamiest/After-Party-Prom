@@ -12,11 +12,11 @@
       text-align: center;
       margin: 0;
       padding: 0;
-      overflow: auto; /* Change from 'hidden' to 'auto' */
-      user-select: none; /* Prevent text selection */
-      -webkit-user-select: none; /* Safari */
-      -moz-user-select: none; /* Firefox */
-      -ms-user-select: none; /* IE/Edge */
+      overflow: auto;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
     }
     .container {
       display: flex;
@@ -59,13 +59,36 @@
       margin-top: 20px;
       animation: fadeIn 2s ease-in-out;
     }
-    #invitation, #family-friendly {
+    #invitation {
       background: rgba(0, 0, 0, 0.8);
       padding: 20px;
       border-radius: 10px;
       max-width: 400px;
       margin: 20px auto;
       animation: slideIn 1s ease-in-out;
+    }
+    #family-friendly {
+      background: linear-gradient(135deg, #ffcc99, #ff99cc, #99ccff, #ccff99);
+      color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      animation: slideIn 1s ease-in-out;
+    }
+    #family-friendly h2 {
+      color: #333;
+    }
+    #family-friendly p, #family-friendly ul {
+      color: #444;
+    }
+    #family-friendly ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    #family-friendly ul li::before {
+      content: "🌟";
+      margin-right: 10px;
     }
     #password {
       padding: 10px;
@@ -166,12 +189,12 @@
         Dear Guests,<br><br>
         The <span class="highlight">Slam Boca After Party</span> is a safe, supervised, and fun event designed to give you an unforgettable experience. Here’s why you should attend:
       </p>
-      <ul style="text-align: left; max-width: 600px; margin: 20px auto;">
-        <li>🎉 <strong>Safe Environment:</strong> The event is fully supervised by trusted chaperones and security personnel.</li>
-        <li>🍕 <strong>Food & Drinks:</strong> We provide delicious snacks and non-alcoholic beverages to keep everyone energized.</li>
-        <li>💃 <strong>Fun Activities:</strong> From dancing to games, there’s something for everyone to enjoy.</li>
-        <li>👫 <strong>Social Opportunity:</strong> It’s a great way to bond with friends and make new ones.</li>
-        <li>🕒 <strong>Memorable Experience:</strong> Prom only happens once—let’s make it a night to remember!</li>
+      <ul>
+        <li>Safe Environment: The event is fully supervised by trusted chaperones and security personnel.</li>
+        <li>Food & Drinks: We provide delicious snacks and non-alcoholic beverages to keep everyone energized.</li>
+        <li>Fun Activities: From dancing to games, there’s something for everyone to enjoy.</li>
+        <li>Social Opportunity: It’s a great way to bond with friends and make new ones.</li>
+        <li>Memorable Experience: Prom only happens once—let’s make it a night to remember!</li>
       </ul>
       <p>
         We assure you that this event is family-friendly and focused on creating positive memories. Be part of this special celebration!
