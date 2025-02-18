@@ -332,6 +332,7 @@
         "christopher123": "vip-christopher"
       };
       if (vipTabs[password]) {
+        alert('Correct password: ' + password);  // Debugging alert
         document.getElementById('invitation').classList.add('hidden');
         document.getElementById(vipTabs[password]).classList.remove('hidden');
       } else if (password === "family123") { // Secret password for family-friendly page
