@@ -112,6 +112,44 @@
       background-color: #ff00ff;
       animation: confetti-fall 5s linear infinite;
     }
+    .rsvp-form {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      animation: slideIn 1s ease-in-out;
+    }
+    .gallery {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .gallery img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .guestbook {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      animation: slideIn 1s ease-in-out;
+    }
+    .guestbook input, .guestbook textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+    }
+    .guestbook button {
+      width: 100%;
+    }
     @keyframes flicker {
       0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
@@ -194,11 +232,60 @@
       </p>
     </div>
 
+    <!-- RSVP Form -->
+    <div class="rsvp-form">
+      <h2>RSVP</h2>
+      <input type="text" id="rsvp-name" placeholder="Your Name">
+      <input type="email" id="rsvp-email" placeholder="Your Email">
+      <button onclick="submitRSVP()">Submit</button>
+    </div>
+
+    <!-- Photo Gallery -->
+    <div class="gallery">
+      <img src="photo1.jpg" alt="Photo 1">
+      <img src="photo2.jpg" alt="Photo 2">
+      <img src="photo3.jpg" alt="Photo 3">
+      <img src="photo4.jpg" alt="Photo 4">
+    </div>
+
+    <!-- Music Playlist -->
+    <div class="music-playlist">
+      <h2>Party Playlist</h2>
+      <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <!-- Guestbook -->
+    <div class="guestbook">
+      <h2>Guestbook</h2>
+      <input type="text" id="guestbook-name" placeholder="Your Name">
+      <textarea id="guestbook-message" placeholder="Your Message"></textarea>
+      <button onclick="submitGuestbook()">Submit</button>
+    </div>
+
     <!-- Countdown Timer -->
     <div id="countdown" class="hidden"></div>
 
     <!-- Address Reveal -->
     <div id="address" class="hidden"></div>
+
+    <!-- Social Media Integration -->
+    <div class="social-media">
+      <h2>Share the Event</h2>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=your-url" target="_blank">Share on Facebook</a>
+      <a href="https://twitter.com/intent/tweet?url=your-url&text=Excited%20for%20the%20After%20Party!" target="_blank">Share on Twitter</a>
+    </div>
+
+    <!-- QR Code -->
+    <div class="qr-code">
+      <h2>Scan for Details</h2>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=your-url" alt="QR Code">
+    </div>
+
+    <!-- Animated Backgrounds -->
+    <div class="animated-backgrounds">
+      <h2>Animated Background</h2>
+      <div class="confetti"></div>
+    </div>
   </div>
 
   <script>
@@ -293,6 +380,20 @@
         confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
         container.appendChild(confetti);
       }
+    }
+
+    // Function to submit RSVP
+    function submitRSVP() {
+      const name = document.getElementById('rsvp-name').value;
+      const email = document.getElementById('rsvp-email').value;
+      alert(`RSVP submitted for ${name} (${email})`);
+    }
+
+    // Function to submit Guestbook entry
+    function submitGuestbook() {
+      const name = document.getElementById('guestbook-name').value;
+      const message = document.getElementById('guestbook-message').value;
+      alert(`Guestbook entry submitted by ${name}: ${message}`);
     }
   </script>
 </body>
