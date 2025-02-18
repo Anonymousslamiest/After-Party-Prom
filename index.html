@@ -112,6 +112,21 @@
       background-color: #ff00ff;
       animation: confetti-fall 5s linear infinite;
     }
+    #admin-tab {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      animation: slideIn 1s ease-in-out;
+    }
+    #admin-tab h2 {
+      color: #ff00ff;
+    }
+    #admin-tab p {
+      color: #fff;
+    }
     @keyframes flicker {
       0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
@@ -199,6 +214,13 @@
 
     <!-- Address Reveal -->
     <div id="address" class="hidden"></div>
+
+    <!-- Admin Tab -->
+    <div id="admin-tab" class="hidden">
+      <h2>Admin Tab</h2>
+      <p>List of Users Who Opened the Website:</p>
+      <ul id="user-list"></ul>
+    </div>
   </div>
 
   <script>
@@ -227,6 +249,8 @@
         checkDateAndReveal();
       } else if (password === "family123") { // Secret password for family-friendly page
         showFamilyFriendly(); // Show family-friendly content within the same page
+      } else if (password === "admin") { // Admin password
+        showAdminTab(); // Show admin tab
       } else {
         alert("Incorrect Password. Try Again.");
       }
@@ -236,6 +260,12 @@
     function showFamilyFriendly() {
       document.getElementById('invitation').classList.add('hidden');
       document.getElementById('family-friendly').classList.remove('hidden');
+    }
+
+    // Function to show admin tab
+    function showAdminTab() {
+      document.getElementById('invitation').classList.add('hidden');
+      document.getElementById('admin-tab').classList.remove('hidden');
     }
 
     // Function to check the date and reveal the address
@@ -294,6 +324,15 @@
         container.appendChild(confetti);
       }
     }
+
+    // Track users who open the website
+    window.addEventListener('load', () => {
+      const userList = document.getElementById('user-list');
+      const user = `User opened at ${new Date().toLocaleString()}`;
+      const listItem = document.createElement('li');
+      listItem.textContent = user;
+      userList.appendChild(listItem);
+    });
   </script>
 </body>
 </html>
