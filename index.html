@@ -112,6 +112,21 @@
       background-color: #ff00ff;
       animation: confetti-fall 5s linear infinite;
     }
+    .vip-tab {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      animation: slideIn 1s ease-in-out;
+    }
+    .vip-tab h2 {
+      color: #ff00ff;
+    }
+    .vip-tab p {
+      color: #fff;
+    }
     @keyframes flicker {
       0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
@@ -199,6 +214,83 @@
 
     <!-- Address Reveal -->
     <div id="address" class="hidden"></div>
+
+    <!-- VIP Tabs -->
+    <div id="vip-sheilyn" class="vip-tab">
+      <h2>Welcome, Sheilyn Lazo!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-john" class="vip-tab">
+      <h2>Welcome, John Sattler!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-nicolly" class="vip-tab">
+      <h2>Welcome, Nicolly Viana!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-nicholas" class="vip-tab">
+      <h2>Welcome, Nicholas Lopez!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-limda" class="vip-tab">
+      <h2>Welcome, Limda!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-esther" class="vip-tab">
+      <h2>Welcome, Esther Tomaz!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-kyle" class="vip-tab">
+      <h2>Welcome, Kyle Marin!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-king" class="vip-tab">
+      <h2>Welcome, King Cosbi!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-luiz" class="vip-tab">
+      <h2>Welcome, Luiz Miranda!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-ezekiel" class="vip-tab">
+      <h2>Welcome, Ezekiel Ramos!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-gabby" class="vip-tab">
+      <h2>Welcome, Gabby Correia!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-thayna" class="vip-tab">
+      <h2>Welcome, Thayna da Silva!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-thalys" class="vip-tab">
+      <h2>Welcome, Thalys da Silva!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-vanessa" class="vip-tab">
+      <h2>Welcome, Vanessa Bermejo!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
+    <div id="vip-christopher" class="vip-tab">
+      <h2>Welcome, Christopher Montoya!</h2>
+      <p>You are invited to the exclusive after party.</p>
+      <p>Details will be revealed soon. Stay tuned!</p>
+    </div>
   </div>
 
   <script>
@@ -219,12 +311,29 @@
       document.getElementById('invitation').classList.remove('hidden');
     }
 
-    // Function to unlock details (password: kruh69, case-insensitive)
+    // Function to unlock details with individual passwords
     function unlockDetails() {
       const password = document.getElementById('password').value.toLowerCase(); // Case-insensitive check
-      if (password === "kruh69") {
+      const vipTabs = {
+        "sheilyn123": "vip-sheilyn",
+        "john123": "vip-john",
+        "nicolly123": "vip-nicolly",
+        "nicholas123": "vip-nicholas",
+        "limda123": "vip-limda",
+        "esther123": "vip-esther",
+        "kyle123": "vip-kyle",
+        "king123": "vip-king",
+        "luiz123": "vip-luiz",
+        "ezekiel123": "vip-ezekiel",
+        "gabby123": "vip-gabby",
+        "thayna123": "vip-thayna",
+        "thalys123": "vip-thalys",
+        "vanessa123": "vip-vanessa",
+        "christopher123": "vip-christopher"
+      };
+      if (vipTabs[password]) {
         document.getElementById('invitation').classList.add('hidden');
-        checkDateAndReveal();
+        document.getElementById(vipTabs[password]).classList.remove('hidden');
       } else if (password === "family123") { // Secret password for family-friendly page
         showFamilyFriendly(); // Show family-friendly content within the same page
       } else {
