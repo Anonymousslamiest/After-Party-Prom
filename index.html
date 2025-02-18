@@ -112,6 +112,21 @@
       background-color: #ff00ff;
       animation: confetti-fall 5s linear infinite;
     }
+    .vip-tab {
+      display: none;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      animation: slideIn 1s ease-in-out;
+    }
+    .vip-tab h2 {
+      color: #ff00ff;
+    }
+    .vip-tab p {
+      color: #fff;
+    }
     @keyframes flicker {
       0%, 18%, 22%, 25%, 53%, 57%, 100% {
         text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
@@ -158,6 +173,7 @@
       <p>For Those Who Dare to Stay, A Secret Awaits.</p>
       <p>We are not like other people who don't know how to make events!</p>
       <button onclick="showInvitation()">Enter the Secret</button>
+      <button onclick="showVIP()">VIP Access</button> <!-- VIP Button -->
     </div>
 
     <!-- Invitation Page -->
@@ -199,6 +215,12 @@
 
     <!-- Address Reveal -->
     <div id="address" class="hidden"></div>
+
+    <!-- VIP Section -->
+    <div id="vip-section" class="vip-tab hidden">
+      <h2>VIP Access</h2>
+      <p>Welcome to the exclusive VIP section. You have access to special content!</p>
+    </div>
   </div>
 
   <script>
@@ -217,6 +239,17 @@
     function showInvitation() {
       document.getElementById('homepage').classList.add('hidden');
       document.getElementById('invitation').classList.remove('hidden');
+    }
+
+    // Function to show VIP section
+    function showVIP() {
+      const password = prompt("Enter VIP password:");
+      if (password === "vipSecret") { // Simple password check
+        document.getElementById('homepage').classList.add('hidden');
+        document.getElementById('vip-section').classList.remove('hidden');
+      } else {
+        alert("Incorrect Password. Try Again.");
+      }
     }
 
     // Function to unlock details (password: kruh69, case-insensitive)
