@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Midnight Society</title>
+  <title>Slam Boca After Party - Midnight Society</title>
   <style>
     body {
       font-family: 'Cinzel', serif;
@@ -134,7 +134,7 @@
   <div class="container">
     <!-- Homepage -->
     <div id="homepage">
-      <h1>The Midnight Society</h1>
+      <h1>Slam Boca After Party</h1>
       <p>The Night Doesn’t End at Prom.</p>
       <p>For Those Who Dare to Stay, A Secret Awaits.</p>
       <button onclick="showInvitation()">Enter the Secret</button>
@@ -182,6 +182,8 @@
       if (password === "kruh69") {
         document.getElementById('invitation').classList.add('hidden');
         checkDateAndReveal();
+      } else if (password === "family123") { // Secret password for family-friendly page
+        window.open("family-friendly.html", "_blank"); // Open in a new tab
       } else {
         alert("Incorrect Password. Try Again.");
       }
