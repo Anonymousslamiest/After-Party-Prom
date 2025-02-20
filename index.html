@@ -5,7 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Slam Boca After Party😈 - Midnight Society</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css"> <!-- External CSS -->
+  <link rel="stylesheet" href="styles.css"> <!-- External CSS -->body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+
+h1, h2 {
+  font-size: 3rem;
+  margin: 0;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+  animation: flicker 1.5s infinite alternate;
+}
+
+p, li {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #fff;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+}
+
+button {
+  background-color: #ff00ff;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 20px;
+  border-radius: 5px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e600e6;
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.page {
+  padding: 20px;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
 </head>
 <body>
   <div class="container">
