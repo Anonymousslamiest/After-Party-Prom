@@ -211,16 +211,16 @@
       </p>
     </div>
 
-    <!-- Countdown Timer -->
-    <div id="countdown" class="hidden"></div>
-
-    <!-- Address Reveal -->
-    <div id="address" class="hidden"></div>
-
-    <!-- VIP Section -->
-    <div id="vip-section" class="vip-tab hidden">
-      <h2>VIP Access</h2>
-      <p>Welcome to the exclusive VIP section. You have access to special content!</p>
+    <!-- Naughty Section -->
+    <div id="naughty" class="vip-tab hidden">
+      <h2>Naughty Version</h2>
+      <p>Welcome to the naughty version of the after party. This is for those who want to have an extra bit of fun!</p>
+      <ul>
+        <li>Bring Your Own Alcohol: Avoid the $5 entry fee by bringing your own alcohol.</li>
+        <li>Exclusive Music: Dance to the hottest tracks all night long.</li>
+        <li>Fun and Games: Enjoy a variety of naughty games and activities.</li>
+      </ul>
+      <p>Get ready for a night to remember, but keep it hush-hush. What happens at the after party, stays at the after party!</p>
     </div>
   </div>
 
@@ -261,6 +261,8 @@
         checkDateAndReveal();
       } else if (password === "family123") { // Secret password for family-friendly page
         showFamilyFriendly(); // Show family-friendly content within the same page
+      } else if (password === "naughty123") { // Secret password for naughty page
+        showNaughty(); // Show naughty content within the same page
       } else {
         alert("Incorrect Password. Try Again.");
       }
@@ -270,6 +272,12 @@
     function showFamilyFriendly() {
       document.getElementById('invitation').classList.add('hidden');
       document.getElementById('family-friendly').classList.remove('hidden');
+    }
+
+    // Function to show naughty content
+    function showNaughty() {
+      document.getElementById('invitation').classList.add('hidden');
+      document.getElementById('naughty').classList.remove('hidden');
     }
 
     // Function to check the date and reveal the address
