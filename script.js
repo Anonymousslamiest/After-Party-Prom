@@ -18,28 +18,7 @@ function showInvitation() {
 // Function to unlock details (password: kruh69, family123, vipaccess)
 function unlockDetails() {
   const password = document.getElementById('password').value.toLowerCase(); // Case-insensitive check
-  
-  const vipPasswords = {
-    "sheilyn123": "Sheilyn Lazo",
-    "john123": "John Sattler",
-    "nicolly123": "Nicolly Viana",
-    "nicholas123": "Nicholas Lopez",
-    "limda123": "Limda",
-    "esther123": "Esther Tomaz",
-    "kyle123": "Kyle Marin",
-    "king123": "King Cosbi",
-    "luiz123": "Luiz Miranda",
-    "ezekiel123": "Ezekiel Ramos",
-    "gabby123": "Gabby Correia",
-    "thayna123": "Thayna da Silva",
-    "thalys123": "Thalys da Silva",
-    "vanessa123": "Vanessa Bermejo",
-    "christopher123": "Christopher Montoya"
-  };
-
-  if (vipPasswords[password]) {
-    showVIPInvitation(vipPasswords[password]);
-  } else if (password === "kruh69") {
+  if (password === "kruh69") {
     document.getElementById('invitation').classList.add('hidden');
     checkDateAndReveal();
   } else if (password === "family123") { // Secret password for family-friendly page
@@ -53,20 +32,6 @@ function unlockDetails() {
 function showFamilyFriendly() {
   document.getElementById('invitation').classList.add('hidden');
   document.getElementById('family-friendly').classList.remove('hidden');
-}
-
-// Function to show VIP invitation
-function showVIPInvitation(name) {
-  document.getElementById('invitation').classList.add('hidden');
-  document.getElementById('vip-invitation').classList.remove('hidden');
-  document.getElementById('vip-message').innerHTML = `
-    <p>Dear ${name},</p>
-    <p>Welcome to the exclusive VIP section of the Slam Boca After Party!</p>
-    <p>You have been specially selected for this privileged access. Enjoy the night with premium snacks, drinks, and exclusive performances.</p>
-    <p>We look forward to celebrating with you!</p>
-    <p>Sincerely,</p>
-    <p>The Midnight Society Team</p>
-  `;
 }
 
 // Function to check the date and reveal the address
