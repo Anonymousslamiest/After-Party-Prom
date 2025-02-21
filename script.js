@@ -111,25 +111,7 @@ function createCalendarEvent() {
   // Create Android calendar event link
   const androidEventLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${eventStartDate.replace(/-|:|\.\d\d\d/g, '')}/${eventEndDate.replace(/-|:|\.\d\d\d/g, '')}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}`;
 
-  // Add calendar event links to the address reveal section
-  document.getElementById('address').innerHTML += `<br><a href="${iosEventLink}" download="event.ics">Add to iPhone Calendar</a>`;
-  document.getElementById('address').innerHTML += `<br><a href="${androidEventLink}" target="_blank">Add to Google Calendar</a>`;
+  // Open calendar event links
+  window.open(iosEventLink, '_blank');
+  window.open(androidEventLink, '_blank');
 }
-
-// Modify the checkDateAndReveal function to call createCalendarEvent
-function checkDateAndReveal() {
-  const today = new Date();
-  const revealDate = new Date("April 10, 2025 18:00:00"); // April 10, 2025 at 6:00 PM
-
-  if (today >= revealDate) {
-    // Reveal the address
-    document.getElementById('address').classList.remove('hidden');
-    document.getElementById('address').innerHTML = "📍 The Secret Location: <strong>123 Hidden Lane, Mystic City</strong>";
-    startConfetti(); // Start confetti animation
-
-    // Create calendar event
-    createCalendarEvent();
-  } else {
-    // Show countdown to April 10, 2025 at 6:00 PM
-    startCountdown();
-  }
