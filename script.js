@@ -102,16 +102,23 @@ function createCalendarEvent() {
   const eventTitle = "After Party Event";
   const eventLocation = "123 Hidden Lane, Mystic City";
   const eventDescription = "Join us for the After Party!";
-  const eventStartDate = new Date("April 10, 2025 18:00:00").toISOString();
-  const eventEndDate = new Date("April 10, 2025 23:00:00").toISOString();
+  const eventStartDate = "20250410T180000Z";
+  const eventEndDate = "20250410T230000Z";
 
   // Create iPhone calendar event link
-  const iosEventLink = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${eventStartDate.replace(/-|:|\.\d\d\d/g, '')}\nDTEND:${eventEndDate.replace(/-|:|\.\d\d\d/g, '')}\nSUMMARY:${eventTitle}\nDESCRIPTION:${eventDescription}\nLOCATION:${eventLocation}\nEND:VEVENT\nEND:VCALENDAR`;
+  const iosEventLink = `data:text/calendar;charset=utf8,BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nDTSTART:${eventStartDate}\nDTEND:${eventEndDate}\nSUMMARY:${eventTitle}\nDESCRIPTION:${eventDescription}\nLOCATION:${eventLocation}\nEND:VEVENT\nEND:VCALENDAR`;
 
   // Create Android calendar event link
-  const androidEventLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${eventStartDate.replace(/-|:|\.\d\d\d/g, '')}/${eventEndDate.replace(/-|:|\.\d\d\d/g, '')}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}`;
+  const androidEventLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(eventTitle)}&dates=${eventStartDate}/${eventEndDate}&details=${encodeURIComponent(eventDescription)}&location=${encodeURIComponent(eventLocation)}`;
 
   // Open calendar event links
-  window.open(iosEventLink, '_blank');
   window.open(androidEventLink, '_blank');
+  
+  // Create temporary link for iOS download
+  const tempLink = document.createElement('a');
+  tempLink.href = iosEventLink;
+  tempLink.download = 'event.ics';
+  document.body.appendChild(tempLink);
+  tempLink.click();
+  document.body.removeChild(tempLink);
 }
