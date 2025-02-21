@@ -98,3 +98,8 @@ button:hover {
   text-shadow: 0 0 10px #ff00ff;
   animation: fadeIn 2s ease-in-out;
 }
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: black;
+  }
+}
