@@ -80,7 +80,7 @@ button:hover {
   padding: 0;
 }
 #family-friendly ul li::before {
-  content: "🌟";
+  content: "⭐";
   margin-right: 10px;
 }
 #password {
@@ -98,14 +98,24 @@ button:hover {
   text-shadow: 0 0 10px #ff00ff;
   animation: fadeIn 2s ease-in-out;
 }
-#vip-section {
-  background: linear-gradient(135deg, #ffcc99, #ff99cc, #99ccff, #ccff99);
-  color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 20px auto;
-  animation: slideIn 1s ease-in-out;
+.fullscreen-vip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 1000;
+}
+.fullscreen-vip h2,
+.fullscreen-vip p {
+  text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green;
 }
 .confetti {
   position: absolute;
