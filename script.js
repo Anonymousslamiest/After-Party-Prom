@@ -90,3 +90,10 @@ function startConfetti() {
     container.appendChild(confetti);
   }
 }
+function isMobileDevice() {
+  return /Mobi|Android/i.test(navigator.userAgent);
+}
+
+if (isMobileDevice()) {
+  document.body.style.backgroundColor = 'black';
+}
