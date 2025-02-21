@@ -1,4 +1,4 @@
-// Disable right-click and context menu
+v// Disable right-click and context menu
 document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // Disable keyboard shortcuts for screenshots (e.g., Print Screen, Ctrl+Shift+I)
@@ -15,7 +15,7 @@ function showInvitation() {
   document.getElementById('invitation').classList.remove('hidden');
 }
 
-// Function to unlock details (password: kruh69, case-insensitive)
+// Function to unlock details (password: kruh69, family123, vipaccess)
 function unlockDetails() {
   const password = document.getElementById('password').value.toLowerCase(); // Case-insensitive check
   if (password === "kruh69") {
@@ -23,6 +23,8 @@ function unlockDetails() {
     checkDateAndReveal();
   } else if (password === "family123") { // Secret password for family-friendly page
     showFamilyFriendly(); // Show family-friendly content within the same page
+  } else if (password === "vipaccess") { // VIP password
+    showVIPSection(); // Show VIP section
   } else {
     alert("Incorrect Password. Try Again.");
   }
@@ -32,6 +34,12 @@ function unlockDetails() {
 function showFamilyFriendly() {
   document.getElementById('invitation').classList.add('hidden');
   document.getElementById('family-friendly').classList.remove('hidden');
+}
+
+// Function to show VIP section
+function showVIPSection() {
+  document.getElementById('invitation').classList.add('hidden');
+  document.getElementById('vip-section').classList.remove('hidden');
 }
 
 // Function to check the date and reveal the address
