@@ -98,6 +98,15 @@ button:hover {
   text-shadow: 0 0 10px #ff00ff;
   animation: fadeIn 2s ease-in-out;
 }
+#vip-section {
+  background: linear-gradient(135deg, #ffcc99, #ff99cc, #99ccff, #ccff99);
+  color: #333;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  animation: slideIn 1s ease-in-out;
+}
 .confetti {
   position: absolute;
   width: 10px;
