@@ -89,4 +89,3 @@ function startConfetti() {
     confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
     container.appendChild(confetti);
   }
-}
