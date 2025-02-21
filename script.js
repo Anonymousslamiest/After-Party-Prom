@@ -23,8 +23,6 @@ function unlockDetails() {
     checkDateAndReveal();
   } else if (password === "family123") { // Secret password for family-friendly page
     showFamilyFriendly(); // Show family-friendly content within the same page
-  } else if (password === "vipaccess") { // VIP password
-    showVIPSection(); // Show VIP section
   } else {
     alert("Incorrect Password. Try Again.");
   }
@@ -34,24 +32,6 @@ function unlockDetails() {
 function showFamilyFriendly() {
   document.getElementById('invitation').classList.add('hidden');
   document.getElementById('family-friendly').classList.remove('hidden');
-}
-
-// Function to show VIP section
-function showVIPSection() {
-  document.getElementById('invitation').classList.add('hidden');
-  document.getElementById('vip-section').classList.remove('hidden');
-}
-
-// Function to show the VIP lounge
-function showVIPLounge() {
-  document.getElementById('vip-section').classList.add('hidden');
-  document.getElementById('vip-lounge').classList.remove('hidden');
-}
-
-// Function to exit the VIP lounge
-function exitVIPLounge() {
-  document.getElementById('vip-lounge').classList.add('hidden');
-  document.getElementById('vip-section').classList.remove('hidden');
 }
 
 // Function to check the date and reveal the address
@@ -82,4 +62,31 @@ function startCountdown() {
     const distance = revealDate - now;
 
     const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `The Secret Will Be Revealed In:<br>${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      countdownElement.innerHTML = "The Secret Has Been Revealed!";
+      checkDateAndReveal(); // Reveal the address if the countdown is over
+    }
+  }, 1000);
+}
+
+// Confetti Animation
+function startConfetti() {
+  const confettiCount = 100;
+  const container = document.querySelector('.container');
+
+  for (let i = 0; i < confettiCount; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = `${Math.random() * 100}vw`;
+    confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    container.appendChild(confetti);
+  }
+}
