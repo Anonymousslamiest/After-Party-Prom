@@ -97,16 +97,3 @@ function isMobileDevice() {
 if (isMobileDevice()) {
   document.body.style.backgroundColor = 'black';
 }
-const guestNameInput = document.getElementById('guest-name');
-const addGuestButton = document.getElementById('add-guest');
-const guestsList = document.getElementById('guests');
-
-addGuestButton.addEventListener('click', () => {
-  const guestName = guestNameInput.value.trim();
-  if (guestName) {
-    const listItem = document.createElement('li');
-    listItem.textContent = guestName;
-    guestsList.appendChild(listItem);
-    guestNameInput.value = '';
-  }
-});
