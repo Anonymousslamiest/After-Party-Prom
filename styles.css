@@ -1,100 +1,127 @@
-body {
-  font-family: 'Cinzel', serif;
-  background-color: #400000; /* Dark red color */
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+// Disable right-click and context menu
+document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+// Disable keyboard shortcuts for screenshots (e.g., Print Screen, Ctrl+Shift+I)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'PrintScreen' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+    e.preventDefault();
+    alert('Screenshots are not allowed.');
+  }
+});
+
+// Function to show the invitation page
+function showInvitation() {
+  document.getElementById('homepage').classList.add('hidden');
+  document.getElementById('invitation').classList.remove('hidden');
 }
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
+
+// Function to unlock details (password: kruh69, family123, vipaccess)
+function unlockDetails() {
+  const password = document.getElementById('password').value.toLowerCase(); // Case-insensitive check
+  
+  const vipPasswords = {
+    "sheilyn123": "Sheilyn Lazo",
+    "john123": "John Sattler",
+    "nicolly123": "Nicolly Viana",
+    "nicholas123": "Nicholas Lopez",
+    "limda123": "Limda",
+    "esther123": "Esther Tomaz",
+    "kyle123": "Kyle Marin",
+    "king123": "King Cosbi",
+    "luiz123": "Luiz Miranda",
+    "ezekiel123": "Ezekiel Ramos",
+    "gabby123": "Gabby Correia",
+    "thayna123": "Thayna da Silva",
+    "thalys123": "Thalys da Silva",
+    "vanessa123": "Vanessa Bermejo",
+    "christopher123": "Christopher Montoya"
+  };
+
+  if (vipPasswords[password]) {
+    showVIPInvitation(vipPasswords[password]);
+  } else if (password === "kruh69") {
+    document.getElementById('invitation').classList.add('hidden');
+    checkDateAndReveal();
+  } else if (password === "family123") { // Secret password for family-friendly page
+    showFamilyFriendly(); // Show family-friendly content within the same page
+  } else {
+    alert("Incorrect Password. Try Again.");
+  }
 }
-h1, h2 {
-  font-size: 3rem;
-  margin: 0;
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-  animation: flicker 1.5s infinite alternate;
+
+// Function to show family-friendly content
+function showFamilyFriendly() {
+  document.getElementById('invitation').classList.add('hidden');
+  document.getElementById('family-friendly').classList.remove('hidden');
 }
-p {
-  font-size: 1.2rem;
-  margin: 10px 0;
+
+// Function to show VIP invitation
+function showVIPInvitation(name) {
+  document.getElementById('invitation').classList.add('hidden');
+  document.getElementById('vip-invitation').classList.remove('hidden');
+  document.getElementById('vip-message').innerHTML = `
+    <p>Dear ${name},</p>
+    <p>Welcome to the exclusive VIP section of the Slam Boca After Party!</p>
+    <p>You have been specially selected for this privileged access. Enjoy the night with premium snacks, drinks, and exclusive performances.</p>
+    <p>We look forward to celebrating with you!</p>
+    <p>Sincerely,</p>
+    <p>The Midnight Society Team</p>
+  `;
 }
-button {
-  background-color: #ff00ff;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-  border-radius: 5px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+
+// Function to check the date and reveal the address
+function checkDateAndReveal() {
+  const today = new Date();
+  const revealDate = new Date("April 10, 2025 18:00:00"); // April 10, 2025 at 6:00 PM
+
+  if (today >= revealDate) {
+    // Reveal the address
+    document.getElementById('address').classList.remove('hidden');
+    document.getElementById('address').innerHTML = "📍 The Secret Location: <strong>123 Hidden Lane, Mystic City</strong>";
+    startConfetti(); // Start confetti animation
+  } else {
+    // Show countdown to April 10, 2025 at 6:00 PM
+    startCountdown();
+  }
 }
-button:hover {
-  background-color: #e600e6;
-  transform: scale(1.1);
+
+// Countdown Timer to April 10, 2025 at 6:00 PM
+function startCountdown() {
+  const countdownElement = document.getElementById('countdown');
+  countdownElement.classList.remove('hidden');
+
+  const revealDate = new Date("April 10, 2025 18:00:00").getTime(); // April 10, 2025 at 6:00 PM
+
+  const timer = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = revealDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdownElement.innerHTML = `The Secret Will Be Revealed In:<br>${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+    if (distance < 0) {
+      clearInterval(timer);
+      countdownElement.innerHTML = "The Secret Has Been Revealed!";
+      checkDateAndReveal(); // Reveal the address if the countdown is over
+    }
+  }, 1000);
 }
-.hidden {
-  display: none;
-}
-#countdown {
-  font-size: 2rem;
-  margin-top: 20px;
-  animation: fadeIn 2s ease-in-out;
-}
-#invitation {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 20px auto;
-  animation: slideIn 1s ease-in-out;
-}
-#family-friendly {
-  background: linear-gradient(135deg, #ffcc99, #ff99cc, #99ccff, #ccff99);
-  color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 20px auto;
-  animation: slideIn 1s ease-in-out;
-}
-#family-friendly h2 {
-  color: #333;
-}
-#family-friendly p, #family-friendly ul {
-  color: #444;
-}
-#family-friendly ul {
-  list-style-type: none;
-  padding: 0;
-}
-#family-friendly ul li::before {
-  content: "⭐";
-  margin-right: 10px;
-}
-#password {
-  padding: 10px;
-  font-size: 1rem;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: none;
-  width: 80%;
-}
-#address {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  color: #ff00ff;
-  text-shadow: 0 0 10px #ff00ff;
-  animation: fadeIn 2s ease-in-out;
+
+// Confetti Animation
+function startConfetti() {
+  const confettiCount = 100;
+  const container = document.querySelector('.container');
+
+  for (let i = 0; i < confettiCount; i++) {
+    const confetti = document.createElement('div');
+    confetti.classList.add('confetti');
+    confetti.style.left = `${Math.random() * 100}vw`;
+    confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+    container.appendChild(confetti);
+  }
 }
