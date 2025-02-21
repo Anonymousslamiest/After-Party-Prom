@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret After Party</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    .neon {
+      font-size: 3rem;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+      animation: glow 1.5s infinite alternate;
+    }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+      }
+      to {
+        text-shadow: 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+    .countdown {
+      font-size: 2rem;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    }
+    .section {
+      margin: 20px;
+      padding: 20px;
+      border: 2px solid #ff00ff;
+      border-radius: 10px;
+      background-color: #1a1a1a;
+    }
+    .vip {
+      color: #ffcc00;
+      text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+    }
+    .admin {
+      color: #ff0000;
+      text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+    }
+    button {
+      background-color: #ff00ff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #cc00cc;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="neon">Secret After Party</h1>
+    <p class="countdown" id="countdown"></p>
+  </header>
+
+  <!-- Normal Invitation Section -->
+  <div class="section">
+    <h2 class="neon">You're Invited</h2>
+    <p>Join us for an unforgettable night of mystery and excitement.</p>
+    <p>Date: <span id="hiddenDate" class="hidden">April 2</span></p>
+    <button onclick="revealDate()">Reveal the Date</button>
+  </div>
+
+  <!-- VIP Section -->
+  <div class="section vip">
+    <h2 class="neon">VIP Access</h2>
+    <p>Exclusive perks await you. Enter the secret code to unlock VIP privileges.</p>
+    <input type="text" id="vipCode" placeholder="Enter VIP Code">
+    <button onclick="checkVIP()">Unlock VIP</button>
+    <p id="vipMessage" class="hidden">Welcome, VIP! Your exclusive access is granted.</p>
+  </div>
+
+  <!-- Admin Section -->
+  <div class="section admin">
+    <h2 class="neon">Admin Zone</h2>
+    <p>Restricted area. Enter admin credentials to proceed.</p>
+    <input type="password" id="adminPass" placeholder="Enter Admin Password">
+    <button onclick="checkAdmin()">Access Admin</button>
+    <p id="adminMessage" class="hidden">Welcome, Admin. Full control unlocked.</p>
+  </div>
+
+  <script>
+    // Countdown to April 2
+    const countdown = document.getElementById('countdown');
+    const partyDate = new Date('April 2, 2024 23:59:59').getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = partyDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      if (distance < 0) {
+        clearInterval(interval);
+        countdown.innerHTML = "The party has started!";
+      }
+    };
+    const interval = setInterval(updateCountdown, 1000);
+
+    // Reveal Date Function
+    function revealDate() {
+      document.getElementById('hiddenDate').classList.remove('hidden');
+    }
+
+    // VIP Code Check
+    function checkVIP() {
+      const code = document.getElementById('vipCode').value;
+      if (code === "NEON2024") {
+        document.getElementById('vipMessage').classList.remove('hidden');
+      } else {
+        alert("Invalid VIP Code!");
+      }
+    }
+
+    // Admin Password Check
+    function checkAdmin() {
+      const pass = document.getElementById('adminPass').value;
+      if (pass === "Admin123") {
+        document.getElementById('adminMessage').classList.remove('hidden');
+      } else {
+        alert("Incorrect Password!");
+      }
+    }
+  </script>
+</body>
+</html>
