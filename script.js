@@ -133,4 +133,3 @@ function checkDateAndReveal() {
     // Show countdown to April 10, 2025 at 6:00 PM
     startCountdown();
   }
-}
