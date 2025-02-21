@@ -117,6 +117,31 @@ button:hover {
 .fullscreen-vip p {
   text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green;
 }
+#vip-lounge {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  animation: slideIn 1s ease-in-out;
+}
+#vip-lounge h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+#vip-lounge p, #vip-lounge ul {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+#vip-lounge ul {
+  list-style-type: none;
+  padding: 0;
+}
+#vip-lounge ul li::before {
+  content: "🌟";
+  margin-right: 10px;
+}
 .confetti {
   position: absolute;
   width: 10px;
