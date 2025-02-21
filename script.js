@@ -1,4 +1,4 @@
-v// Disable right-click and context menu
+// Disable right-click and context menu
 document.addEventListener('contextmenu', (e) => e.preventDefault());
 
 // Disable keyboard shortcuts for screenshots (e.g., Print Screen, Ctrl+Shift+I)
