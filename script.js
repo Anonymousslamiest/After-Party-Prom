@@ -97,3 +97,33 @@ function isMobileDevice() {
 if (isMobileDevice()) {
   document.body.style.backgroundColor = 'black';
 }
+async function askQuestion() {
+  const question = document.getElementById('question').value;
+  if (question.trim() === '') return;
+
+  const messages = document.getElementById('messages');
+  const userMessage = document.createElement('div');
+  userMessage.className = 'user-message';
+  userMessage.textContent = question;
+  messages.appendChild(userMessage);
+
+  try {
+    const response = await fetch('/ask', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ question }),
+    });
+
+    const data = await response.json();
+    const aiMessage = document.createElement('div');
+    aiMessage.className = 'ai-message';
+    aiMessage.textContent = data.answer;
+    messages.appendChild(aiMessage);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+
+  document.getElementById('question').value = '';
+}
