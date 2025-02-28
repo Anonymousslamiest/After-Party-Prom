@@ -97,3 +97,35 @@ function isMobileDevice() {
 if (isMobileDevice()) {
   document.body.style.backgroundColor = 'black';
 }
+// Function to generate personalized invitation
+function generateInvitation() {
+  const name = document.getElementById('name').value;
+  const photo = document.getElementById('photo').files[0];
+  
+  if (!name || !photo) {
+    alert("Please provide both your name and a photo.");
+    return;
+  }
+
+  // Simulate AI design generation (replace with actual API call)
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const photoData = e.target.result;
+    const cardHTML = `
+      <div class="invitation-card">
+        <img src="${photoData}" alt="Photo of ${name}">
+        <h2>Welcome ${name}!</h2>
+        <p>You're invited to the Slam Boca After Party.</p>
+      </div>
+    `;
+    document.getElementById('invitation-card').innerHTML = cardHTML;
+    document.getElementById('homepage').classList.add('hidden');
+    document.getElementById('personalized-invitation').classList.remove('hidden');
+  };
+  reader.readAsDataURL(photo);
+}
+
+// Function to send the invitation
+function sendInvitation() {
+  alert("Invitation sent!");
+}
