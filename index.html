@@ -3,132 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Graduation Celebration 2025</title>
-    <link rel="stylesheet" href="style.css">
+    <title>After Hours Party</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <button id="versionToggle" class="version-toggle">
-            Switch to Family Version
-        </button>
+        <!-- Background -->
+        <div class="particle-background"></div>
 
-        <div id="afterPartyVersion" class="version active">
-            <p class="host">Hosted by the Johnson Family</p>
-            <h1>GRADUATION CELEBRATION</h1>
-            <p class="subtitle">Celebrating our graduates' achievements</p>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1>AFTER HOURS</h1>
+                <p>When the night truly begins</p>
+            </div>
 
+            <!-- Countdown -->
             <div class="countdown-container">
                 <div class="countdown-box">
-                    <span id="days" class="countdown-value">00</span>
-                    <span class="countdown-label">days</span>
+                    <div id="days">00</div>
+                    <div>days</div>
                 </div>
                 <div class="countdown-box">
-                    <span id="hours" class="countdown-value">00</span>
-                    <span class="countdown-label">hours</span>
+                    <div id="hours">00</div>
+                    <div>hours</div>
                 </div>
                 <div class="countdown-box">
-                    <span id="minutes" class="countdown-value">00</span>
-                    <span class="countdown-label">minutes</span>
+                    <div id="minutes">00</div>
+                    <div>minutes</div>
                 </div>
                 <div class="countdown-box">
-                    <span id="seconds" class="countdown-value">00</span>
-                    <span class="countdown-label">seconds</span>
+                    <div id="seconds">00</div>
+                    <div>seconds</div>
                 </div>
             </div>
 
+            <!-- Event Details -->
             <div class="event-details">
                 <h2>THE GATHERING</h2>
-                <p class="date">April 11th, 2025 • 11:30 PM</p>
-                <p class="refreshments">Dinner and Refreshments Provided</p>
-                <div class="location">
-                    <h3>LOCATION</h3>
-                    <p id="address">Address will be revealed soon...</p>
+                <p>May 15th, 2024 • 23:30</p>
+                <div class="location-section">
+                    <p class="location-title">LOCATION</p>
+                    <p id="address" class="address-hidden">[REDACTED UNTIL PARTY START]</p>
                 </div>
             </div>
 
+            <!-- Info Grid -->
             <div class="info-grid">
+                <!-- What to Expect -->
                 <div class="info-box">
                     <h2>WHAT AWAITS</h2>
                     <ul>
-                        <li><i class="fas fa-utensils"></i> Formal dinner service</li>
-                        <li><i class="fas fa-camera"></i> Family photos</li>
-                        <li><i class="fas fa-microphone"></i> Graduation speeches</li>
-                        <li><i class="fas fa-award"></i> Special presentations</li>
+                        <li><i class="fas fa-music"></i> Underground beats</li>
+                        <li><i class="fas fa-cocktail"></i> Exclusive mixology</li>
+                        <li><i class="fas fa-star"></i> Secret performances</li>
+                        <li><i class="fas fa-moon"></i> Dawn experiences</li>
                     </ul>
                 </div>
+
+                <!-- Rules -->
                 <div class="info-box">
                     <h2>THE RULES</h2>
                     <ul>
-                        <li><i class="fas fa-user-tie"></i> Formal attire required</li>
-                        <li><i class="fas fa-envelope"></i> RSVP required for catering</li>
-                        <li><i class="fas fa-users"></i> Family-friendly event</li>
-                        <li><i class="fas fa-gift"></i> Gift registry available</li>
+                        <li><i class="fas fa-camera-slash"></i> No photos</li>
+                        <li><i class="fas fa-user-secret"></i> What happens here stays here</li>
+                        <li><i class="fas fa-user-slash"></i> No uninvited guests</li>
+                        <li><i class="fas fa-tshirt"></i> Dark formal attire</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- RSVP Form -->
             <div class="rsvp-form">
-                <h2>RSVP</h2>
+                <h2>SECURE YOUR PRESENCE</h2>
                 <form id="rsvpForm">
                     <div class="form-grid">
-                        <input type="text" placeholder="Full Name" required>
-                        <input type="email" placeholder="Email Address" required>
+                        <input type="text" placeholder="CODE NAME" required>
+                        <input type="email" placeholder="SECURE CONTACT" required>
                     </div>
-                    <button type="submit">Confirm Attendance</button>
+                    <button type="submit">CONFIRM ATTENDANCE</button>
                 </form>
             </div>
-        </div>
 
-        <div id="familyVersion" class="version">
-            <p class="host">A Family Celebration</p>
-            <h1>GRADUATION DINNER</h1>
-            <p class="subtitle">Join us for an elegant evening</p>
-
-            <div class="countdown-container">
-                <!-- Countdown boxes will be populated by JavaScript -->
-            </div>
-
-            <div class="event-details">
-                <h2>THE CELEBRATION</h2>
-                <p class="date">April 11th, 2025 • 6:30 PM</p>
-                <p class="refreshments">Elegant Dinner Service</p>
-                <div class="location">
-                    <h3>VENUE</h3>
-                    <p>The Grand Ballroom at Elegant Avenue</p>
-                </div>
-            </div>
-
-            <div class="info-grid">
-                <div class="info-box">
-                    <h2>EVENING PROGRAM</h2>
-                    <ul>
-                        <li><i class="fas fa-glass-cheers"></i> Welcome Reception</li>
-                        <li><i class="fas fa-utensils"></i> Four-Course Dinner</li>
-                        <li><i class="fas fa-music"></i> Live Entertainment</li>
-                        <li><i class="fas fa-camera"></i> Professional Photography</li>
-                    </ul>
-                </div>
-                <div class="info-box">
-                    <h2>DETAILS</h2>
-                    <ul>
-                        <li><i class="fas fa-user-tie"></i> Black Tie Optional</li>
-                        <li><i class="fas fa-envelope"></i> RSVP Required</li>
-                        <li><i class="fas fa-parking"></i> Valet Available</li>
-                        <li><i class="fas fa-users"></i> Adults Only</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="rsvp-form">
-                <h2>RSVP</h2>
-                <form id="familyRsvpForm">
-                    <div class="form-grid">
-                        <input type="text" placeholder="Full Name" required>
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <button type="submit">Confirm Attendance</button>
-                </form>
+            <!-- Footer -->
+            <div class="footer">
+                <p><i class="fas fa-users"></i> 150 others are coming</p>
+                <p id="hours-until" class="countdown-text"></p>
+                <p><i class="fas fa-music"></i> Bring your dancing shoes</p>
             </div>
         </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
