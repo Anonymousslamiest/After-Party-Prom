@@ -1,74 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slam Boca After Party😈 - Midnight Society</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>After Hours Party</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <main class="container">
-    <!-- Homepage -->
-    <section id="homepage">
-      <h1>Slam Boca After Party</h1>
-      <p>The Night Doesn’t End at Prom.</p>
-      <p>For Those Who Dare to Stay, A Secret Awaits.</p>
-      <p>We are not like other people who don't know how to make events!</p>
-      <button onclick="showInvitation()">Enter the Secret</button>
-    </section>
+    <div class="container">
+        <!-- Background -->
+        <div class="particle-background"></div>
 
-    <!-- Invitation Page -->
-    <section id="invitation" class="hidden">
-      <h2>You’re Invited…</h2>
-      <p>When: The Clock Strikes Midnight</p>
-      <p>Where: <span id="location">A Hidden Venue – Revealed on April 10</span></p>
-      <p>Dress: Mystery and Elegance</p>
-      <p>Tell No One. This is Your Secret to Keep.</p>
-      <input type="password" id="password" placeholder="Enter the Password" aria-label="Password">
-      <button onclick="unlockDetails()">Unlock Details</button>
-    </section>
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1>AFTER HOURS</h1>
+                <p>When the night truly begins</p>
+            </div>
 
-    <!-- Family Friendly Page -->
-    <section id="family-friendly" class="hidden">
-      <h2>Why You Should Attend the After Party</h2>
-      <p>
-        Dear Guests,<br><br>
-        The <span class="highlight">Slam Boca After Party</span> is a safe, supervised, and fun event designed to give you an unforgettable experience. Here’s why you should attend:
-      </p>
-      <ul>
-        <li>Safe Environment: The event is fully supervised by trusted chaperones and security personnel.</li>
-        <li>Food & Drinks: We provide delicious snacks and non-alcoholic beverages to keep everyone energized.</li>
-        <li>Fun Activities: From dancing to games, there’s something for everyone to enjoy.</li>
-        <li>Social Opportunity: It’s a great way to bond with friends and make new ones.</li>
-        <li>Memorable Experience: Prom only happens once—let’s make it a night to remember!</li>
-      </ul>
-      <p>
-        We assure you that this event is family-friendly and focused on creating positive memories. Be part of this special celebration!
-      </p>
-      <p>
-        Sincerely,<br>
-        S.J.N
-      </p>
-    </section>
+            <!-- Countdown -->
+            <div class="countdown-container">
+                <div class="countdown-box">
+                    <div id="days">00</div>
+                    <div>days</div>
+                </div>
+                <div class="countdown-box">
+                    <div id="hours">00</div>
+                    <div>hours</div>
+                </div>
+                <div class="countdown-box">
+                    <div id="minutes">00</div>
+                    <div>minutes</div>
+                </div>
+                <div class="countdown-box">
+                    <div id="seconds">00</div>
+                    <div>seconds</div>
+                </div>
+            </div>
 
-    <!-- Countdown Timer -->
-    <div id="countdown" class="hidden"></div>
+            <!-- Event Details -->
+            <div class="event-details">
+                <h2>THE GATHERING</h2>
+                <p>May 15th, 2024 • 23:30</p>
+                <div class="location-section">
+                    <p class="location-title">LOCATION</p>
+                    <p id="address" class="address-hidden">[REDACTED UNTIL PARTY START]</p>
+                </div>
+            </div>
 
-    <!-- Address Reveal -->
-    <div id="address" class="hidden"></div>
-  </main>
+            <!-- Info Grid -->
+            <div class="info-grid">
+                <!-- What to Expect -->
+                <div class="info-box">
+                    <h2>WHAT AWAITS</h2>
+                    <ul>
+                        <li><i class="fas fa-music"></i> Underground beats</li>
+                        <li><i class="fas fa-cocktail"></i> Exclusive mixology</li>
+                        <li><i class="fas fa-star"></i> Secret performances</li>
+                        <li><i class="fas fa-moon"></i> Dawn experiences</li>
+                    </ul>
+                </div>
 
-  <script src="script.js" defer></script>
-</body>
-</html>
-<!-- Personalized Invitation -->
-    <section id="personalized-invitation" class="hidden">
-      <h2>Your Personalized Invitation</h2>
-      <div id="invitation-card"></div>
-      <button onclick="sendInvitation()">Send Invitation</button>
-    </section>
-  </main>
-  <script src="script.js" defer></script>
+                <!-- Rules -->
+                <div class="info-box">
+                    <h2>THE RULES</h2>
+                    <ul>
+                        <li><i class="fas fa-camera-slash"></i> No photos</li>
+                        <li><i class="fas fa-user-secret"></i> What happens here stays here</li>
+                        <li><i class="fas fa-user-slash"></i> No uninvited guests</li>
+                        <li><i class="fas fa-tshirt"></i> Dark formal attire</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RSVP Form -->
+            <div class="rsvp-form">
+                <h2>SECURE YOUR PRESENCE</h2>
+                <form id="rsvpForm">
+                    <div class="form-grid">
+                        <input type="text" placeholder="CODE NAME" required>
+                        <input type="email" placeholder="SECURE CONTACT" required>
+                    </div>
+                    <button type="submit">CONFIRM ATTENDANCE</button>
+                </form>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer">
+                <p><i class="fas fa-users"></i> 150 others are coming</p>
+                <p id="hours-until" class="countdown-text"></p>
+                <p><i class="fas fa-music"></i> Bring your dancing shoes</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
