@@ -3,95 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>After Hours Party</title>
+    <title>Graduation Celebration</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Background -->
-        <div class="particle-background"></div>
+    <div class="min-h-screen">
+        <div class="pattern-overlay"></div>
 
-        <!-- Main content -->
-        <div class="main-content">
-            <!-- Header -->
-            <div class="header">
-                <h1>AFTER HOURS</h1>
-                <p>When the night truly begins</p>
-            </div>
+        <div class="container">
+            <div class="content-center">
+                <p class="host-text">Hosted by the Johnson Family</p>
+                <h1>GRADUATION CELEBRATION</h1>
+                <p class="subtitle">Celebrating our graduates' achievements</p>
 
-            <!-- Countdown -->
-            <div class="countdown-container">
-                <div class="countdown-box">
-                    <div id="days">00</div>
-                    <div>days</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="hours">00</div>
-                    <div>hours</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="minutes">00</div>
-                    <div>minutes</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="seconds">00</div>
-                    <div>seconds</div>
-                </div>
-            </div>
-
-            <!-- Event Details -->
-            <div class="event-details">
-                <h2>THE GATHERING</h2>
-                <p>May 15th, 2024 • 23:30</p>
-                <div class="location-section">
-                    <p class="location-title">LOCATION</p>
-                    <p id="address" class="address-hidden">[REDACTED UNTIL PARTY START]</p>
-                </div>
-            </div>
-
-            <!-- Info Grid -->
-            <div class="info-grid">
-                <!-- What to Expect -->
-                <div class="info-box">
-                    <h2>WHAT AWAITS</h2>
-                    <ul>
-                        <li><i class="fas fa-music"></i> Underground beats</li>
-                        <li><i class="fas fa-cocktail"></i> Exclusive mixology</li>
-                        <li><i class="fas fa-star"></i> Secret performances</li>
-                        <li><i class="fas fa-moon"></i> Dawn experiences</li>
-                    </ul>
-                </div>
-
-                <!-- Rules -->
-                <div class="info-box">
-                    <h2>THE RULES</h2>
-                    <ul>
-                        <li><i class="fas fa-camera-slash"></i> No photos</li>
-                        <li><i class="fas fa-user-secret"></i> What happens here stays here</li>
-                        <li><i class="fas fa-user-slash"></i> No uninvited guests</li>
-                        <li><i class="fas fa-tshirt"></i> Dark formal attire</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- RSVP Form -->
-            <div class="rsvp-form">
-                <h2>SECURE YOUR PRESENCE</h2>
-                <form id="rsvpForm">
-                    <div class="form-grid">
-                        <input type="text" placeholder="CODE NAME" required>
-                        <input type="email" placeholder="SECURE CONTACT" required>
+                <div class="countdown-grid">
+                    <div class="countdown-box">
+                        <div id="days" class="countdown-value">0</div>
+                        <div class="countdown-label">days</div>
                     </div>
-                    <button type="submit">CONFIRM ATTENDANCE</button>
-                </form>
-            </div>
+                    <div class="countdown-box">
+                        <div id="hours" class="countdown-value">0</div>
+                        <div class="countdown-label">hours</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="minutes" class="countdown-value">0</div>
+                        <div class="countdown-label">minutes</div>
+                    </div>
+                    <div class="countdown-box">
+                        <div id="seconds" class="countdown-value">0</div>
+                        <div class="countdown-label">seconds</div>
+                    </div>
+                </div>
 
-            <!-- Footer -->
-            <div class="footer">
-                <p><i class="fas fa-users"></i> 150 others are coming</p>
-                <p id="hours-until" class="countdown-text"></p>
-                <p><i class="fas fa-music"></i> Bring your dancing shoes</p>
+                <div class="info-box">
+                    <h2>THE GATHERING</h2>
+                    <p class="event-time">April 11th, 2025 • 11:30 PM</p>
+                    <p class="refreshments">Dinner and Refreshments Provided</p>
+                    <div class="location-info">
+                        <p class="location-title">LOCATION</p>
+                        <p id="address" class="location-address">Address will be revealed soon...</p>
+                    </div>
+                </div>
+
+                <div class="two-column">
+                    <div class="info-box">
+                        <h2>WHAT AWAITS</h2>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-utensils"></i> Formal dinner service</li>
+                            <li><i class="fas fa-camera"></i> Family photos</li>
+                            <li><i class="fas fa-microphone"></i> Graduation speeches</li>
+                            <li><i class="fas fa-award"></i> Special presentations</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <h2>THE RULES</h2>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-tuxedo"></i> Formal attire required</li>
+                            <li><i class="fas fa-envelope"></i> RSVP required for catering</li>
+                            <li><i class="fas fa-users"></i> Family-friendly event</li>
+                            <li><i class="fas fa-gift"></i> Gift registry available</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <form id="rsvpForm" class="rsvp-form">
+                        <h2>RSVP</h2>
+                        <div class="form-grid">
+                            <input type="text" name="name" placeholder="Full Name" required>
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <button type="submit">Confirm Attendance</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
