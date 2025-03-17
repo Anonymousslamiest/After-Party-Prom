@@ -9,6 +9,9 @@
 </head>
 <body>
     <div class="container">
+        <!-- Toggle Button -->
+        <button id="toggleVersion" class="toggle-button">Switch to Family Version</button>
+
         <!-- Background -->
         <div class="particle-background"></div>
 
@@ -16,34 +19,17 @@
         <div class="main-content">
             <!-- Header -->
             <div class="header">
-                <h1>AFTER HOURS</h1>
-                <p>When the night truly begins</p>
+                <h1 id="mainTitle">AFTER HOURS</h1>
+                <p id="mainSubtitle">When the night truly begins</p>
             </div>
 
             <!-- Countdown -->
-            <div class="countdown-container">
-                <div class="countdown-box">
-                    <div id="days">00</div>
-                    <div>days</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="hours">00</div>
-                    <div>hours</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="minutes">00</div>
-                    <div>minutes</div>
-                </div>
-                <div class="countdown-box">
-                    <div id="seconds">00</div>
-                    <div>seconds</div>
-                </div>
-            </div>
+            <div id="countdown" class="text-center mb-16"></div>
 
             <!-- Event Details -->
             <div class="event-details">
-                <h2>THE GATHERING</h2>
-                <p>april 11 11:00pm • 23:30</p>
+                <h2 id="eventTitle">THE GATHERING</h2>
+                <p id="eventTime">april 11 11:00pm • 23:30</p>
                 <div class="location-section">
                     <p class="location-title">LOCATION</p>
                     <p id="address" class="address-hidden">[REDACTED UNTIL PARTY START]</p>
@@ -80,11 +66,15 @@
                 <h2>SECURE YOUR PRESENCE</h2>
                 <form id="rsvpForm">
                     <div class="form-grid">
-                        <input type="text" placeholder="CODE NAME" required>
-                        <input type="email" placeholder="SECURE CONTACT" required>
+                        <input type="text" id="name" placeholder="CODE NAME" required>
+                        <input type="email" id="email" placeholder="SECURE CONTACT" required>
                     </div>
+                    <p id="error" class="error-message"></p>
                     <button type="submit">CONFIRM ATTENDANCE</button>
                 </form>
+                <div id="successMessage" class="success-message hidden">
+                    Thank you for your RSVP! Get ready for the night of your life.
+                </div>
             </div>
 
             <!-- Footer -->
