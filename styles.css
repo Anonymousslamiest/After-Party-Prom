@@ -1,121 +1,256 @@
+css
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  font-family: 'Cinzel', serif;
-  background-color: #400000; /* Dark red color */
-  color: #fff;
-  text-align: center;
-  margin: 0;
-  padding: 0;
-  overflow: auto;
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+    font-family: 'Arial', sans-serif;
+    background-color: #0a0a0a;
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
 }
+
+/* Container */
 .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
+    position: relative;
+    min-height: 100vh;
 }
-h1, h2 {
-  font-size: 3rem;
-  margin: 0;
-  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
-  animation: flicker 1.5s infinite alternate;
+
+/* Background */
+.particle-background {
+    position: absolute;
+    inset: 0;
+    background-image: url('/particles.png');
+    opacity: 0.2;
+    animation: pulse 2s infinite;
 }
-p {
-  font-size: 1.2rem;
-  margin: 10px 0;
+
+/* Main content */
+.main-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 1rem;
 }
-button {
-  background-color: #ff00ff;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  cursor: pointer;
-  margin-top: 20px;
-  border-radius: 5px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 5rem;
 }
-button:hover {
-  background-color: #e600e6;
-  transform: scale(1.1);
+
+.header h1 {
+    font-size: clamp(3rem, 10vw, 9rem);
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: pulse 2s infinite;
 }
-.hidden {
-  display: none;
+
+.header p {
+    font-size: 2rem;
+    color: rgba(255, 0, 255, 0.7);
+    margin-top: 1rem;
 }
-#countdown {
-  font-size: 2rem;
-  margin-top: 20px;
-  animation: fadeIn 2s ease-in-out;
+
+/* Countdown */
+.countdown-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 5rem;
 }
-#invitation {
-  background: rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 20px auto;
-  animation: slideIn 1s ease-in-out;
+
+.countdown-box {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: all 0.3s ease;
 }
-#family-friendly {
-  background: linear-gradient(135deg, #ffcc99, #ff99cc, #99ccff, #ccff99);
-  color: #333;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: 20px auto;
-  animation: slideIn 1s ease-in-out;
+
+.countdown-box:hover {
+    border-color: rgba(255, 0, 255, 0.5);
 }
-#family-friendly h2 {
-  color: #333;
+
+.countdown-box div:first-child {
+    font-size: 2.5rem;
+    font-family: monospace;
+    color: #00ffff;
 }
-#family-friendly p, #family-friendly ul {
-  color: #444;
+
+.countdown-box div:last-child {
+    color: #666;
+    margin-top: 0.5rem;
 }
-#family-friendly ul {
-  list-style-type: none;
-  padding: 0;
+
+/* Event Details */
+.event-details {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin-bottom: 5rem;
+    transition: transform 0.3s ease;
 }
-#family-friendly ul li::before {
-  content: "⭐";
-  margin-right: 10px;
+
+.event-details:hover {
+    transform: scale(1.02);
 }
-#password {
-  padding: 10px;
-  font-size: 1rem;
-  margin-top: 10px;
-  border-radius: 5px;
-  border: none;
-  width: 80%;
+
+.event-details h2 {
+    color: #00ffff;
+    margin-bottom: 1rem;
 }
-#address {
-  font-size: 1.5rem;
-  margin-top: 20px;
-  color: #ff00ff;
-  text-shadow: 0 0 10px #ff00ff;
-  animation: fadeIn 2s ease-in-out;
+
+.location-section {
+    margin-top: 1.5rem;
 }
-@media only screen and (max-width: 600px) {
-  body {
-    background-color: black;
-  }
-.invitation-card {
-  background-color: #fff;
-  color: #000;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 400px;
-  margin: 20px auto;
-  text-align: center;
+
+.location-title {
+    color: #ff00ff;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
-.invitation-card img {
-  max-width: 100%;
-  border-radius: 50%;
+
+.address-hidden {
+    opacity: 0.5;
+    filter: blur(4px);
+    transition: all 1s ease;
 }
-.invitation-card h2 {
-  margin-top: 10px;
-  font-size: 2rem;
+
+/* Info Grid */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.info-box {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+
+.info-box h2 {
+    color: #00ffff;
+    margin-bottom: 1.5rem;
+}
+
+.info-box ul {
+    list-style: none;
+}
+
+.info-box li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.info-box i {
+    color: #ff00ff;
+    margin-right: 1rem;
+}
+
+/* RSVP Form */
+.rsvp-form {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    margin-bottom: 5rem;
+}
+
+.rsvp-form h2 {
+    color: #00ffff;
+    margin-bottom: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.rsvp-form input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.rsvp-form input:focus {
+    border-color: #ff00ff;
+    outline: none;
+}
+
+.rsvp-form button {
+    width: 100%;
+    background: linear-gradient(to right, #ff00ff, #00ffff);
+    color: black;
+    font-weight: bold;
+    padding: 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.rsvp-form button:hover {
+    opacity: 0.9;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+}
+
+.footer p {
+    margin-bottom: 1rem;
+}
+
+.footer i {
+    color: #ff00ff;
+    margin-right: 0.5rem;
+}
+
+.countdown-text {
+    font-family: monospace;
+    color: #00ffff;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.8; }
+    100% { opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
 }
