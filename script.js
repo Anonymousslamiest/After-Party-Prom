@@ -1,50 +1,53 @@
+const PARTY_START_TIME = new Date("2025-04-11T23:30:00");
+const ADDRESS_REVEAL_TIME = new Date("2025-04-06T00:00:00");
+const ADDRESS = "742 Elegant Avenue, Grand Hall";
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Set the party start time
-    const partyStartTime = new Date("2024-05-15T23:30:00");
-    
-    // Update countdown and address visibility
-    function updateCountdownAndAddress() {
-        const now = new Date();
-        const diff = partyStartTime - now;
+function updateCountdown() {
+    const now = new Date();
+    const targetDate = now < ADDRESS_REVEAL_TIME ? ADDRESS_REVEAL_TIME : PARTY_START_TIME;
+    const diff = targetDate - now;
 
-        // Calculate time units
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        // Update countdown display
-        document.getElementById('days').textContent = days.toString().padStart(2, '0');
-        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        
-        // Update hours until party
-        document.getElementById('hours-until').textContent = 
-            `${hours} hours until the real party begins`;
-
-        // Update address visibility
-        const addressElement = document.getElementById('address');
-        if (now >= partyStartTime) {
-            addressElement.textContent = "CLASSIFIED LOCATION REVEALED: 742 DARK AVENUE";
-            addressElement.classList.remove('address-hidden');
-        } else {
-            addressElement.textContent = "[REDACTED UNTIL PARTY START]";
-            addressElement.classList.add('address-hidden');
-        }
+    if (now >= PARTY_START_TIME) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '0';
+        document.getElementById('minutes').textContent = '0';
+        document.getElementById('seconds').textContent = '0';
+        document.getElementById('address').textContent = "Event has begun! 🎉";
+        return;
     }
 
-    // Initial update
-    updateCountdownAndAddress();
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    // Update every second
-    setInterval(updateCountdownAndAddress, 1000);
+    document.getElementById('days').textContent = days;
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+    document.getElementById('seconds').textContent = seconds;
 
-    // Handle form submission
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here
-        alert('RSVP Confirmed! Get ready for the night of your life.');
-    });
+    // Update address display
+    const addressElement = document.getElementById('address');
+    if (now >= ADDRESS_REVEAL_TIME) {
+        addressElement.textContent = ADDRESS;
+    } else {
+        addressElement.textContent = `Address will be revealed in ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+}
+
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown(); // Initial call
+
+// Handle form submission
+document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    
+    // Here you would typically send this data to your server
+    console.log('RSVP Submission:', { name, email });
+    alert('Thank you for your RSVP!');
+    e.target.reset();
 });
