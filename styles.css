@@ -1,5 +1,10 @@
-css
-/* Base styles */
+:root {
+    --primary-color: #1a237e;
+    --accent-color: #c5a572;
+    --bg-color: #f8f9fa;
+    --white: #ffffff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,30 +12,24 @@ css
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #0a0a0a;
-    color: white;
-    min-height: 100vh;
-    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--primary-color);
 }
 
-/* Container */
-.container {
+.min-h-screen {
+    min-height: 100vh;
     position: relative;
-    min-height: 100vh;
 }
 
-/* Background */
-.particle-background {
+.pattern-overlay {
     position: absolute;
     inset: 0;
-    background-image: url('/particles.png');
-    opacity: 0.2;
-    animation: pulse 2s infinite;
+    background-image: url('/elegant-pattern.png');
+    opacity: 0.1;
 }
 
-/* Main content */
-.main-content {
+.container {
     position: relative;
     z-index: 10;
     max-width: 1200px;
@@ -38,219 +37,159 @@ body {
     padding: 4rem 1rem;
 }
 
-/* Header */
-.header {
+.content-center {
     text-align: center;
-    margin-bottom: 5rem;
 }
 
-.header h1 {
-    font-size: clamp(3rem, 10vw, 9rem);
+.host-text {
+    color: var(--accent-color);
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 4rem;
     font-weight: bold;
-    letter-spacing: 0.2em;
-    background: linear-gradient(to right, #ff00ff, #00ffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: pulse 2s infinite;
-}
-
-.header p {
-    font-size: 2rem;
-    color: rgba(255, 0, 255, 0.7);
-    margin-top: 1rem;
-}
-
-/* Countdown */
-.countdown-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-bottom: 5rem;
-}
-
-.countdown-box {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.countdown-box:hover {
-    border-color: rgba(255, 0, 255, 0.5);
-}
-
-.countdown-box div:first-child {
-    font-size: 2.5rem;
-    font-family: monospace;
-    color: #00ffff;
-}
-
-.countdown-box div:last-child {
-    color: #666;
-    margin-top: 0.5rem;
-}
-
-/* Event Details */
-.event-details {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 2rem;
-    margin-bottom: 5rem;
-    transition: transform 0.3s ease;
-}
-
-.event-details:hover {
-    transform: scale(1.02);
-}
-
-.event-details h2 {
-    color: #00ffff;
+    letter-spacing: 0.1em;
     margin-bottom: 1rem;
 }
 
-.location-section {
+.subtitle {
+    font-size: 1.25rem;
+    color: rgba(26, 35, 126, 0.8);
+    font-weight: 300;
+    margin-bottom: 2rem;
+}
+
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 3rem 0;
+}
+
+@media (min-width: 768px) {
+    .countdown-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.countdown-box {
+    background: var(--white);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(197, 165, 114, 0.2);
+}
+
+.countdown-value {
+    font-size: 2.5rem;
+    font-family: monospace;
+    color: var(--accent-color);
+}
+
+.countdown-label {
+    color: rgba(26, 35, 126, 0.6);
+    margin-top: 0.5rem;
+}
+
+.info-box {
+    background: var(--white);
+    border-radius: 0.5rem;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    margin-bottom: 2rem;
+}
+
+.two-column {
+    display: grid;
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+@media (min-width: 768px) {
+    .two-column {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.feature-list {
+    list-style: none;
+    space-y: 1rem;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.feature-list i {
+    color: var(--accent-color);
+    margin-right: 1rem;
+}
+
+.event-time {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.refreshments {
+    color: var(--accent-color);
+}
+
+.location-info {
     margin-top: 1.5rem;
 }
 
 .location-title {
-    color: #ff00ff;
+    font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
 
-.address-hidden {
-    opacity: 0.5;
-    filter: blur(4px);
-    transition: all 1s ease;
-}
-
-/* Info Grid */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 5rem;
-}
-
-.info-box {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 2rem;
-}
-
-.info-box h2 {
-    color: #00ffff;
-    margin-bottom: 1.5rem;
-}
-
-.info-box ul {
-    list-style: none;
-}
-
-.info-box li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.info-box i {
-    color: #ff00ff;
-    margin-right: 1rem;
-}
-
-/* RSVP Form */
 .rsvp-form {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 2rem;
-    margin-bottom: 5rem;
-}
-
-.rsvp-form h2 {
-    color: #00ffff;
-    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1rem;
-    margin-bottom: 1rem;
 }
 
-.rsvp-form input {
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+input {
     width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
     padding: 0.75rem;
-    color: white;
-    transition: all 0.3s ease;
+    border: 1px solid rgba(197, 165, 114, 0.2);
+    border-radius: 0.5rem;
 }
 
-.rsvp-form input:focus {
-    border-color: #ff00ff;
+input:focus {
     outline: none;
+    border-color: var(--accent-color);
 }
 
-.rsvp-form button {
+button {
     width: 100%;
-    background: linear-gradient(to right, #ff00ff, #00ffff);
-    color: black;
+    background-color: var(--primary-color);
+    color: var(--white);
     font-weight: bold;
     padding: 1rem;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: opacity 0.3s ease;
+    transition: background-color 0.3s;
 }
 
-.rsvp-form button:hover {
-    opacity: 0.9;
-}
-
-/* Footer */
-.footer {
-    text-align: center;
-}
-
-.footer p {
-    margin-bottom: 1rem;
-}
-
-.footer i {
-    color: #ff00ff;
-    margin-right: 0.5rem;
-}
-
-.countdown-text {
-    font-family: monospace;
-    color: #00ffff;
-}
-
-/* Animations */
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 1; }
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
+button:hover {
+    background-color: rgba(26, 35, 126, 0.9);
 }
