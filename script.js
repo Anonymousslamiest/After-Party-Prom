@@ -1,131 +1,50 @@
-// Disable right-click and context menu
-document.addEventListener('contextmenu', (e) => e.preventDefault());
 
-// Disable keyboard shortcuts for screenshots (e.g., Print Screen, Ctrl+Shift+I)
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'PrintScreen' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-    e.preventDefault();
-    alert('Screenshots are not allowed.');
-  }
-});
+document.addEventListener('DOMContentLoaded', function() {
+    // Set the party start time
+    const partyStartTime = new Date("2024-05-15T23:30:00");
+    
+    // Update countdown and address visibility
+    function updateCountdownAndAddress() {
+        const now = new Date();
+        const diff = partyStartTime - now;
 
-// Function to show the invitation page
-function showInvitation() {
-  document.getElementById('homepage').classList.add('hidden');
-  document.getElementById('invitation').classList.remove('hidden');
-}
+        // Calculate time units
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-// Function to unlock details (password: kruh69, family123, vipaccess)
-function unlockDetails() {
-  const password = document.getElementById('password').value.toLowerCase(); // Case-insensitive check
-  if (password === "kruh69") {
-    document.getElementById('invitation').classList.add('hidden');
-    checkDateAndReveal();
-  } else if (password === "family123") { // Secret password for family-friendly page
-    showFamilyFriendly(); // Show family-friendly content within the same page
-  } else {
-    alert("Incorrect Password. Try Again.");
-  }
-}
+        // Update countdown display
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        
+        // Update hours until party
+        document.getElementById('hours-until').textContent = 
+            `${hours} hours until the real party begins`;
 
-// Function to show family-friendly content
-function showFamilyFriendly() {
-  document.getElementById('invitation').classList.add('hidden');
-  document.getElementById('family-friendly').classList.remove('hidden');
-}
-
-// Function to check the date and reveal the address
-function checkDateAndReveal() {
-  const today = new Date();
-  const revealDate = new Date("April 10, 2025 18:00:00"); // April 10, 2025 at 6:00 PM
-
-  if (today >= revealDate) {
-    // Reveal the address
-    document.getElementById('address').classList.remove('hidden');
-    document.getElementById('address').innerHTML = "📍 The Secret Location: <strong>123 Hidden Lane, Mystic City</strong>";
-    startConfetti(); // Start confetti animation
-  } else {
-    // Show countdown to April 10, 2025 at 6:00 PM
-    startCountdown();
-  }
-}
-
-// Countdown Timer to April 10, 2025 at 6:00 PM
-function startCountdown() {
-  const countdownElement = document.getElementById('countdown');
-  countdownElement.classList.remove('hidden');
-
-  const revealDate = new Date("April 10, 2025 18:00:00").getTime(); // April 10, 2025 at 6:00 PM
-
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = revealDate - now;
-
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    countdownElement.innerHTML = `The Secret Will Be Revealed In:<br>${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-    if (distance < 0) {
-      clearInterval(timer);
-      countdownElement.innerHTML = "The Secret Has Been Revealed!";
-      checkDateAndReveal(); // Reveal the address if the countdown is over
+        // Update address visibility
+        const addressElement = document.getElementById('address');
+        if (now >= partyStartTime) {
+            addressElement.textContent = "CLASSIFIED LOCATION REVEALED: 742 DARK AVENUE";
+            addressElement.classList.remove('address-hidden');
+        } else {
+            addressElement.textContent = "[REDACTED UNTIL PARTY START]";
+            addressElement.classList.add('address-hidden');
+        }
     }
-  }, 1000);
-}
 
-// Confetti Animation
-function startConfetti() {
-  const confettiCount = 100;
-  const container = document.querySelector('.container');
+    // Initial update
+    updateCountdownAndAddress();
 
-  for (let i = 0; i < confettiCount; i++) {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.left = `${Math.random() * 100}vw`;
-    confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-    container.appendChild(confetti);
-  }
-}
-function isMobileDevice() {
-  return /Mobi|Android/i.test(navigator.userAgent);
-}
+    // Update every second
+    setInterval(updateCountdownAndAddress, 1000);
 
-if (isMobileDevice()) {
-  document.body.style.backgroundColor = 'black';
-}
-// Function to generate personalized invitation
-function generateInvitation() {
-  const name = document.getElementById('name').value;
-  const photo = document.getElementById('photo').files[0];
-  
-  if (!name || !photo) {
-    alert("Please provide both your name and a photo.");
-    return;
-  }
-
-  // Simulate AI design generation (replace with actual API call)
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const photoData = e.target.result;
-    const cardHTML = `
-      <div class="invitation-card">
-        <img src="${photoData}" alt="Photo of ${name}">
-        <h2>Welcome ${name}!</h2>
-        <p>You're invited to the Slam Boca After Party.</p>
-      </div>
-    `;
-    document.getElementById('invitation-card').innerHTML = cardHTML;
-    document.getElementById('homepage').classList.add('hidden');
-    document.getElementById('personalized-invitation').classList.remove('hidden');
-  };
-  reader.readAsDataURL(photo);
-}
-
-// Function to send the invitation
-function sendInvitation() {
-  alert("Invitation sent!");
-}
+    // Handle form submission
+    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('RSVP Confirmed! Get ready for the night of your life.');
+    });
+});
