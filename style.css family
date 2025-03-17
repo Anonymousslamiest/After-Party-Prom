@@ -1,0 +1,127 @@
+/* Base Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styles */
+.header-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
+.title {
+    font-size: 4rem;
+    color: #d4af37;
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.subtitle {
+    color: #ffa6a6;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-family: 'Crimson Text', serif;
+}
+
+/* Countdown Styles */
+.countdown-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.countdown-item {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ffd7d7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Event Details Styles */
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.venue-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.venue-image:hover {
+    transform: scale(1.05);
+}
+
+.details-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ffd7d7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Styles */
+.rsvp-container {
+    background: white;
+    padding: 3rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ffd7d7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 4rem;
+}
+
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input {
+    padding: 0.75rem;
+    border: 1px solid #ffd7d7;
+    border-radius: 0.25rem;
+    transition: box-shadow 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 215, 215, 0.3);
+}
+
+button {
+    background: #d4af37;
+    color: white;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background: #c19b2b;
+}
+
+/* Animations */
+@keyframes shimmer {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+.hover-shine:hover {
+    animation: shimmer 2s infinite;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none;
+}
