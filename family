@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Prom Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="min-h-screen bg-[#fff9f9] px-4 py-12 md:px-8">
+        <div class="max-w-4xl mx-auto relative">
+            <!-- Decorative Elements -->
+            <div class="absolute top-0 left-0 w-32 h-32 opacity-10">
+                <i class="fas fa-flower text-[#d4af37] text-6xl transform -rotate-45"></i>
+            </div>
+            <div class="absolute top-0 right-0 w-32 h-32 opacity-10">
+                <i class="fas fa-flower text-[#d4af37] text-6xl transform rotate-45"></i>
+            </div>
+
+            <!-- Header -->
+            <header class="text-center mb-20 relative">
+                <div class="header-line"></div>
+                <h1 class="title hover-shine">Post-Prom Celebration</h1>
+                <p class="subtitle">An Enchanted Evening of Elegance & Romance</p>
+                <div class="header-line"></div>
+            </header>
+
+            <!-- Countdown Timer -->
+            <div id="countdown" class="text-center mb-16"></div>
+
+            <!-- Event Details -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="image-container">
+                    <img src="/formal-party.jpg" alt="Elegantly decorated venue" class="venue-image">
+                </div>
+                <div class="details-container">
+                    <h2>Event Details</h2>
+                    <div class="details-content">
+                        <p class="detail-item"><i class="fas fa-clock"></i><span id="eventTime">March 15, 2025 | 11:00 PM - 3:00 AM</span></p>
+                        <p class="detail-item"><i class="fas fa-map-marker-alt"></i><span id="eventLocation">Location to be announced</span></p>
+                        <p class="detail-item"><i class="fas fa-ticket-alt"></i><span>Complimentary for all Prom attendees</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety & Dress Code -->
+            <div class="grid md:grid-cols-2 gap-12 mb-16">
+                <div class="info-section">
+                    <h2>Safety & Security</h2>
+                    <ul class="info-list">
+                        <li>Professional security personnel on-site</li>
+                        <li>Supervised entrance and exit</li>
+                        <li>No re-entry policy</li>
+                        <li>Medical staff available</li>
+                        <li>Parent-approved transportation services</li>
+                    </ul>
+                </div>
+                <div class="info-section">
+                    <h2>Dress Code & Conduct</h2>
+                    <ul class="info-list">
+                        <li>Formal or semi-formal attire required</li>
+                        <li>No casual wear permitted</li>
+                        <li>School code of conduct applies</li>
+                        <li>Zero tolerance for inappropriate behavior</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- RSVP Form -->
+            <div class="rsvp-container">
+                <h2>RSVP</h2>
+                <form id="rsvpForm" class="rsvp-form">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                    <p id="error" class="error-message"></p>
+                    <button type="submit">Submit RSVP</button>
+                </form>
+                <div id="successMessage" class="success-message hidden">
+                    Thank you for your RSVP! We can't wait to celebrate with you!
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="text-center">
+                <h2>Contact Information</h2>
+                <div class="contact-info">
+                    <p>Event Coordinator: Mrs. Sarah Johnson</p>
+                    <p>Email: prom2025@school.edu</p>
+                    <p>Emergency Contact: (555) 123-4567</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
