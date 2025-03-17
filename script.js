@@ -1,7 +1,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     // Set the party start time
-    const partyStartTime = new Date("2025-04-15T23:30:00");
+    const partyStartTime = new Date("2025-04-11T23:30:00");
     
     // Update countdown and address visibility
     function updateCountdownAndAddress() {
