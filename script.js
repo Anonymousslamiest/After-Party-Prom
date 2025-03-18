@@ -130,3 +130,60 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateAddressCountdown, 1000);
     }
 });
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Debounce function for better performance
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+        const context = this, args = arguments;
+        const later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+// Example: Optimize resize event
+window.addEventListener('resize', debounce(function () {
+    console.log('Resized');
+}, 250));
+
+// Show modal with smooth transition
+function showModal(modal) {
+    modal.classList.add('show');
+}
+
+function hideModal(modal) {
+    modal.classList.remove('show');
+}
+
+document.getElementById('passwordButton').addEventListener('click', function () {
+    showModal(document.getElementById('passwordModal'));
+});
+
+document.getElementById('cancelPassword').addEventListener('click', function () {
+    hideModal(document.getElementById('passwordModal'));
+});
+
+document.getElementById('eventInfoButton').addEventListener('click', function () {
+    showModal(document.getElementById('eventDetailsModal'));
+});
+
+document.getElementById('closeEventDetails').addEventListener('click', function () {
+    hideModal(document.getElementById('eventDetailsModal'));
+});
