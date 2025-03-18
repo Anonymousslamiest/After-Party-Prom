@@ -16,6 +16,7 @@ body {
     background: linear-gradient(135deg, var(--black), var(--darker-purple), var(--dark-purple));
     color: white;
     min-height: 100vh;
+    text-align: center;
 }
 
 /* Animations */
@@ -40,11 +41,14 @@ body {
     color: transparent;
     animation: shimmer 3s linear infinite;
     margin-bottom: 1rem;
+    display: inline-block;
+    text-align: center;
 }
 
 .subtitle {
     font-size: 1.5rem;
     color: var(--gold);
+    text-align: center;
 }
 
 /* Countdown */
