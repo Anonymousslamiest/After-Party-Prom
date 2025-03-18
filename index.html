@@ -3,88 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>After Hours Party</title>
+    <title>After Dark Prom 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Toggle Button -->
-        <button id="toggleVersion" class="toggle-button">Switch to Family Version</button>
+    <div class="min-h-screen">
+        <header class="text-center py-16">
+            <h1 class="title-elegant">AFTER DARK PROM 2025</h1>
+            <p class="subtitle">An Elegant Evening of Mystery & Celebration</p>
+        </header>
 
-        <!-- Background -->
-        <div class="particle-background"></div>
-
-        <!-- Main content -->
-        <div class="main-content">
-            <!-- Header -->
-            <div class="header">
-                <h1 id="mainTitle">AFTER HOURS</h1>
-                <p id="mainSubtitle">When the night truly begins</p>
+        <div class="countdown-container">
+            <div class="countdown-box">
+                <div class="countdown-value" id="days">00</div>
+                <div class="countdown-label">DAYS</div>
             </div>
-
-            <!-- Countdown -->
-            <div id="countdown" class="text-center mb-16"></div>
-
-            <!-- Event Details -->
-            <div class="event-details">
-                <h2 id="eventTitle">THE GATHERING</h2>
-                <p id="eventTime">april 11 11:00pm • 23:30</p>
-                <div class="location-section">
-                    <p class="location-title">LOCATION</p>
-                    <p id="address" class="address-hidden">[REDACTED UNTIL PARTY START]</p>
-                </div>
+            <div class="countdown-box">
+                <div class="countdown-value" id="hours">00</div>
+                <div class="countdown-label">HOURS</div>
             </div>
-
-            <!-- Info Grid -->
-            <div class="info-grid">
-                <!-- What to Expect -->
-                <div class="info-box">
-                    <h2>WHAT AWAITS</h2>
-                    <ul>
-                        <li><i class="fas fa-music"></i> Underground beats</li>
-                        <li><i class="fas fa-cocktail"></i> Exclusive mixology</li>
-                        <li><i class="fas fa-star"></i> Secret performances</li>
-                        <li><i class="fas fa-moon"></i> Dawn experiences</li>
-                    </ul>
-                </div>
-
-                <!-- Rules -->
-                <div class="info-box">
-                    <h2>THE RULES</h2>
-                    <ul>
-                        <li><i class="fas fa-camera-slash"></i> No photos</li>
-                        <li><i class="fas fa-user-secret"></i> What happens here stays here</li>
-                        <li><i class="fas fa-user-slash"></i> No uninvited guests</li>
-                        <li><i class="fas fa-tshirt"></i> Dark formal attire</li>
-                    </ul>
-                </div>
+            <div class="countdown-box">
+                <div class="countdown-value" id="minutes">00</div>
+                <div class="countdown-label">MINUTES</div>
             </div>
-
-            <!-- RSVP Form -->
-            <div class="rsvp-form">
-                <h2>SECURE YOUR PRESENCE</h2>
-                <form id="rsvpForm">
-                    <div class="form-grid">
-                        <input type="text" id="name" placeholder="CODE NAME" required>
-                        <input type="email" id="email" placeholder="SECURE CONTACT" required>
-                    </div>
-                    <p id="error" class="error-message"></p>
-                    <button type="submit">CONFIRM ATTENDANCE</button>
-                </form>
-                <div id="successMessage" class="success-message hidden">
-                    Thank you for your RSVP! Get ready for the night of your life.
-                </div>
+            <div class="countdown-box">
+                <div class="countdown-value" id="seconds">00</div>
+                <div class="countdown-label">SECONDS</div>
             </div>
+        </div>
 
-            <!-- Footer -->
-            <div class="footer">
-                <p><i class="fas fa-users"></i> 150 others are coming</p>
-                <p id="hours-until" class="countdown-text"></p>
-                <p><i class="fas fa-music"></i> Bring your dancing shoes</p>
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <p class="event-description">Join us for a sophisticated soirée in an enchanting venue</p>
+            <button class="rsvp-button">RSVP NOW</button>
+        </div>
+
+        <div class="venue-section">
+            <div class="elegant-border">
+                <h2>TIME & LOCATION</h2>
+                <p>11:30 PM - Until Dawn</p>
+                <button id="passwordButton" class="password-button">Enter Password</button>
+                <div id="venueInfo" class="venue-info hidden"></div>
+                <div id="addressCountdown" class="address-countdown hidden"></div>
+            </div>
+        </div>
+
+        <div class="dress-code-section">
+            <h2>AN EVENING OF REFINED MYSTERY AWAITS</h2>
+            <p>Dress code: Elegant Dark</p>
+            <p>Bring your invitation for entry</p>
+        </div>
+
+        <footer>
+            <button id="eventInfoButton" class="info-button">Event Information</button>
+        </footer>
+    </div>
+
+    <!-- Password Modal -->
+    <div id="passwordModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Enter Password</h3>
+            <input type="password" id="passwordInput" placeholder="Enter the secret password...">
+            <p id="errorMessage" class="error-message hidden"></p>
+            <div class="modal-buttons">
+                <button id="submitPassword">Reveal Location</button>
+                <button id="cancelPassword">Cancel</button>
             </div>
         </div>
     </div>
+
+    <!-- Event Details Modal -->
+    <div id="eventDetailsModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>EVENT DETAILS</h2>
+            <div class="event-details-content">
+                <div class="detail-section">
+                    <h3>Event Security</h3>
+                    <p>Professional event coordination and security services provided</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Guest List</h3>
+                    <p>Curated guest list with formal invitation required</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Transportation</h3>
+                    <p>Luxury transportation services available</p>
+                </div>
+                <div class="detail-section">
+                    <h3>Coordination</h3>
+                    <p>Dedicated event coordinators available throughout the evening</p>
+                </div>
+            </div>
+            <button id="closeEventDetails" class="close-button">×</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
