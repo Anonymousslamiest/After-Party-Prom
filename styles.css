@@ -1,4 +1,10 @@
-/* Base styles */
+:root {
+    --gold: #ffd7a7;
+    --dark-purple: #2c0a2c;
+    --darker-purple: #1a0f2e;
+    --black: #0f0f0f;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,265 +12,206 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #0a0a0a;
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(135deg, var(--black), var(--darker-purple), var(--dark-purple));
     color: white;
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
-/* Container */
-.container {
-    position: relative;
-    min-height: 100vh;
+/* Animations */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
 }
 
-/* Background */
-.particle-background {
-    position: absolute;
-    inset: 0;
-    background-image: url('/particles.png');
-    opacity: 0.2;
-    animation: pulse 2s infinite;
+@keyframes borderGlow {
+    0%, 100% { border-color: rgba(255, 223, 167, 0.2); }
+    50% { border-color: rgba(255, 223, 167, 0.5); }
 }
 
-/* Main content */
-.main-content {
-    position: relative;
-    z-index: 10;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 1rem;
-}
-
-/* Header */
-.header {
-    text-align: center;
-    margin-bottom: 5rem;
-}
-
-.header h1 {
-    font-size: clamp(3rem, 10vw, 9rem);
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    background: linear-gradient(to right, #ff00ff, #00ffff);
+/* Typography */
+.title-elegant {
+    font-size: 4rem;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #fff, var(--gold), #fff);
+    background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: pulse 2s infinite;
+    animation: shimmer 3s linear infinite;
+    margin-bottom: 1rem;
 }
 
-.header p {
-    font-size: 2rem;
-    color: rgba(255, 0, 255, 0.7);
-    margin-top: 1rem;
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--gold);
 }
 
 /* Countdown */
 .countdown-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1rem;
-    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 4rem 0;
 }
 
 .countdown-box {
-    backdrop-filter: blur(12px);
     background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.countdown-box:hover {
-    border-color: rgba(255, 0, 255, 0.5);
-}
-
-.countdown-box div:first-child {
-    font-size: 2.5rem;
-    font-family: monospace;
-    color: #00ffff;
-}
-
-.countdown-box div:last-child {
-    color: #666;
-    margin-top: 0.5rem;
-}
-
-/* Event Details */
-.event-details {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
     padding: 2rem;
-    margin-bottom: 5rem;
-    transition: transform 0.3s ease;
+    min-width: 140px;
+    text-align: center;
+    border: 1px solid rgba(255, 223, 167, 0.3);
+    animation: borderGlow 2s ease-in-out infinite;
+    border-radius: 0.5rem;
 }
 
-.event-details:hover {
-    transform: scale(1.02);
-}
-
-.event-details h2 {
-    color: #00ffff;
-    margin-bottom: 1rem;
-}
-
-.location-section {
-    margin-top: 1.5rem;
-}
-
-.location-title {
-    color: #ff00ff;
-    font-weight: bold;
+.countdown-value {
+    font-size: 2.5rem;
+    color: var(--gold);
     margin-bottom: 0.5rem;
 }
 
-.address-hidden {
-    opacity: 0.5;
-    filter: blur(4px);
-    transition: all 1s ease;
+.countdown-label {
+    font-size: 0.875rem;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
-/* Info Grid */
-.info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-bottom: 5rem;
-}
-
-.info-box {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 2rem;
-}
-
-.info-box h2 {
-    color: #00ffff;
-    margin-bottom: 1.5rem;
-}
-
-.info-box ul {
-    list-style: none;
-}
-
-.info-box li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.info-box i {
-    color: #ff00ff;
-    margin-right: 1rem;
-}
-
-/* Form Styles */
-.rsvp-form {
-    backdrop-filter: blur(12px);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 2rem;
-    margin-bottom: 5rem;
-}
-
-.rsvp-form h2 {
-    color: #00ffff;
-    margin-bottom: 1.5rem;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
-
-.rsvp-form input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 0.5rem;
-    padding: 0.75rem;
-    color: white;
+/* Buttons */
+.rsvp-button, .password-button {
+    background: linear-gradient(to right, var(--dark-purple), #4a154a);
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-size: 1.25rem;
+    cursor: pointer;
     transition: all 0.3s ease;
 }
 
-.rsvp-form input:focus {
-    border-color: #ff00ff;
-    outline: none;
+.rsvp-button:hover, .password-button:hover {
+    border-color: white;
 }
 
-.rsvp-form button {
-    width: 100%;
-    background: linear-gradient(to right, #ff00ff, #00ffff);
-    color: black;
-    font-weight: bold;
-    padding: 1rem;
-    border: none;
+/* Sections */
+.venue-section, .dress-code-section {
+    max-width: 42rem;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.elegant-border {
+    border: 1px solid rgba(255, 223, 167, 0.3);
+    padding: 2rem;
     border-radius: 0.5rem;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
+    animation: borderGlow 2s ease-in-out infinite;
 }
 
-.rsvp-form button:hover {
-    opacity: 0.9;
+/* Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
 }
 
-/* Footer */
-.footer {
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+}
+
+/* Form Elements */
+input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--gold);
+    border-radius: 0.5rem;
+    color: white;
+    margin: 1rem 0;
+}
+
+.error-message {
+    color: #ff4444;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
-.footer p {
-    margin-bottom: 1rem;
+.hidden {
+    display: none;
 }
 
-.footer i {
-    color: #ff00ff;
-    margin-right: 0.5rem;
+/* Event Details */
+.event-details-content {
+    margin-top: 2rem;
 }
 
-.countdown-text {
-    font-family: monospace;
-    color: #00ffff;
+.detail-section {
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
 }
 
-/* Animations */
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.8; }
-    100% { opacity: 1; }
+.detail-section h3 {
+    color: var(--gold);
+    margin-bottom: 0.5rem;
 }
 
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(0px); }
-}
-
-.animate-float {
-    animation: float 6s ease-in-out infinite;
-}
-
-/* Toggle Button */
-.toggle-button {
+.close-button {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    background: #ff00ff;
-    color: white;
+    top: 1rem;
+    right: 1rem;
+    background: none;
     border: none;
-    padding: 10px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.5rem;
     cursor: pointer;
-    border-radius: 5px;
-    font-size: 1rem;
-    z-index: 20;
+}
+
+/* Address Countdown */
+.countdown-mini {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.countdown-mini span {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    min-width: 60px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .title-elegant {
+        font-size: 2.5rem;
+    }
+
+    .countdown-container {
+        flex-wrap: wrap;
+    }
+
+    .countdown-box {
+        min-width: 120px;
+        padding: 1.5rem;
+    }
 }
