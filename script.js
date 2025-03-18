@@ -129,3 +129,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (passwordVerified) {
         setInterval(updateAddressCountdown, 1000);
     }
+});
