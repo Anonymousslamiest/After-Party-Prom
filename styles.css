@@ -247,3 +247,41 @@ input[type="password"] {
         padding: 1rem;
     }
 }
+/* Add smooth transitions */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Example of a button with smooth hover effect */
+.rsvp-button {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.rsvp-button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+/* Modal animations */
+.modal {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
