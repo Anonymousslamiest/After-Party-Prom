@@ -1,160 +1,131 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Set the party start time
-    const partyStartTime = new Date("2025-04-11T23:30:00");
+document.addEventListener('DOMContentLoaded', () => {
+    // Constants
+    const CORRECT_PASSWORD = 'kruh69';
+    const REVEAL_DATE = new Date('2025-04-05T00:00:00');
+    const EVENT_DATE = new Date('2025-04-11T00:00:00');
 
-    // Initialize variables
-    let timeLeft = null;
-    let address = "";
-    let isFamilyVersion = false;
+    // Elements
+    const passwordButton = document.getElementById('passwordButton');
+    const passwordModal = document.getElementById('passwordModal');
+    const passwordInput = document.getElementById('passwordInput');
+    const submitPassword = document.getElementById('submitPassword');
+    const cancelPassword = document.getElementById('cancelPassword');
+    const errorMessage = document.getElementById('errorMessage');
+    const venueInfo = document.getElementById('venueInfo');
+    const addressCountdown = document.getElementById('addressCountdown');
+    const eventInfoButton = document.getElementById('eventInfoButton');
+    const eventDetailsModal = document.getElementById('eventDetailsModal');
+    const closeEventDetails = document.getElementById('closeEventDetails');
+
+    let passwordVerified = false;
 
     // Countdown Timer
-    function initializeCountdown() {
-        const endDate = new Date("2025-03-15T23:00:00");
-
-        const timer = setInterval(() => {
-            const now = new Date();
-            const difference = endDate - now;
-
-            if (difference <= 0) {
-                clearInterval(timer);
-                timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-                address = "Grand Ballroom, Crystal Hotel";
-                updateLocation();
-            } else {
-                timeLeft = {
-                    days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                    hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                    minutes: Math.floor((difference / 1000 / 60) % 60),
-                    seconds: Math.floor((difference / 1000) % 60)
-                };
-                updateCountdown();
-            }
-        }, 1000);
-    }
-
     function updateCountdown() {
-        const countdownElement = document.getElementById('countdown');
-        if (!countdownElement) return;
-
-        countdownElement.innerHTML = `
-            <h2 class="text-2xl font-playfair text-[#d4af37] mb-6">Grand Reveal In</h2>
-            <div class="countdown-container">
-                <div class="countdown-item">
-                    <span class="text-3xl text-[#d4af37]">${timeLeft.days}</span>
-                    <div class="text-[#ffa6a6]">Days</div>
-                </div>
-                <div class="countdown-item">
-                    <span class="text-3xl text-[#d4af37]">${timeLeft.hours}</span>
-                    <div class="text-[#ffa6a6]">Hours</div>
-                </div>
-                <div class="countdown-item">
-                    <span class="text-3xl text-[#d4af37]">${timeLeft.minutes}</span>
-                    <div class="text-[#ffa6a6]">Minutes</div>
-                </div>
-                <div class="countdown-item">
-                    <span class="text-3xl text-[#d4af37]">${timeLeft.seconds}</span>
-                    <div class="text-[#ffa6a6]">Seconds</div>
-                </div>
-            </div>
-        `;
-    }
-
-    function updateLocation() {
-        const locationElement = document.getElementById('eventLocation');
-        if (locationElement) {
-            locationElement.textContent = address;
-        }
-    }
-
-    // Update countdown and address visibility
-    function updateCountdownAndAddress() {
         const now = new Date();
-        const diff = partyStartTime - now;
+        const difference = EVENT_DATE - now;
 
-        // Calculate time units
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        // Update countdown display
         document.getElementById('days').textContent = days.toString().padStart(2, '0');
         document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
         document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
         document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-
-        // Update hours until party
-        document.getElementById('hours-until').textContent =
-            `${hours} hours until the real party begins`;
-
-        // Update address visibility
-        const addressElement = document.getElementById('address');
-        if (now >= partyStartTime) {
-            addressElement.textContent = "CLASSIFIED LOCATION REVEALED: 742 DARK AVENUE";
-            addressElement.classList.remove('address-hidden');
-        } else {
-            addressElement.textContent = "[REDACTED UNTIL PARTY START]";
-            addressElement.classList.add('address-hidden');
-        }
     }
 
-    // Toggle version
-    function toggleVersion() {
-        isFamilyVersion = !isFamilyVersion;
-        const toggleButton = document.getElementById('toggleVersion');
-        const mainTitle = document.getElementById('mainTitle');
-        const mainSubtitle = document.getElementById('mainSubtitle');
-        const eventTitle = document.getElementById('eventTitle');
-        const eventTime = document.getElementById('eventTime');
-        const address = document.getElementById('address');
+    // Address Reveal Countdown
+    function updateAddressCountdown() {
+        const now = new Date();
+        const difference = REVEAL_DATE - now;
 
-        if (isFamilyVersion) {
-            toggleButton.textContent = "Switch to Original Version";
-            mainTitle.textContent = "Post-Prom Celebration";
-            mainSubtitle.textContent = "An Enchanted Evening of Elegance & Romance";
-            eventTitle.textContent = "Event Details";
-            eventTime.textContent = "March 15, 2025 | 11:00 PM - 3:00 AM";
-            address.textContent = "Location to be announced";
-        } else {
-            toggleButton.textContent = "Switch to Family Version";
-            mainTitle.textContent = "AFTER HOURS";
-            mainSubtitle.textContent = "When the night truly begins";
-            eventTitle.textContent = "THE GATHERING";
-            eventTime.textContent = "april 11 11:00pm • 23:30";
-            address.textContent = "[REDACTED UNTIL PARTY START]";
-        }
-    }
-
-    // Initial update
-    updateCountdownAndAddress();
-
-    // Update every second
-    setInterval(updateCountdownAndAddress, 1000);
-
-    // Handle form submission
-    document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const errorElement = document.getElementById('error');
-
-        if (!name || !email) {
-            errorElement.textContent = "Please fill in all fields";
-            errorElement.style.display = "block";
+        if (difference <= 0 && passwordVerified) {
+            showVenueDetails();
             return;
         }
 
-        // Hide form and show success message
-        document.getElementById('rsvpForm').style.display = 'none';
-        document.getElementById('successMessage').classList.remove('hidden');
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-        alert('RSVP Confirmed! Get ready for the night of your life.');
+        addressCountdown.innerHTML = `
+            <p>Address will be revealed in:</p>
+            <div class="countdown-mini">
+                <span>${days}d</span>
+                <span>${hours}h</span>
+                <span>${minutes}m</span>
+                <span>${seconds}s</span>
+            </div>
+        `;
+    }
+
+    // Password Verification
+    function verifyPassword() {
+        const password = passwordInput.value;
+        
+        if (password === CORRECT_PASSWORD) {
+            passwordVerified = true;
+            passwordModal.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            passwordInput.value = '';
+            
+            const now = new Date();
+            if (now >= REVEAL_DATE) {
+                showVenueDetails();
+            } else {
+                showPasswordSuccess();
+            }
+        } else {
+            errorMessage.textContent = 'Incorrect password';
+            errorMessage.classList.remove('hidden');
+        }
+    }
+
+    function showVenueDetails() {
+        venueInfo.innerHTML = `
+            <p class="venue-address">123 Mystery Avenue, Secret Location</p>
+            <p class="venue-additional">Additional details will be provided upon arrival</p>
+        `;
+        venueInfo.classList.remove('hidden');
+        addressCountdown.classList.add('hidden');
+    }
+
+    function showPasswordSuccess() {
+        addressCountdown.classList.remove('hidden');
+        updateAddressCountdown();
+    }
+
+    // Event Listeners
+    passwordButton.addEventListener('click', () => {
+        passwordModal.classList.remove('hidden');
     });
 
-    // Initialize countdown when page loads
-    initializeCountdown();
+    submitPassword.addEventListener('click', verifyPassword);
 
-    // Add event listener for the toggle button
-    document.getElementById('toggleVersion').addEventListener('click', toggleVersion);
-});
+    cancelPassword.addEventListener('click', () => {
+        passwordModal.classList.add('hidden');
+        passwordInput.value = '';
+        errorMessage.classList.add('hidden');
+    });
+
+    eventInfoButton.addEventListener('click', () => {
+        eventDetailsModal.classList.remove('hidden');
+    });
+
+    closeEventDetails.addEventListener('click', () => {
+        eventDetailsModal.classList.add('hidden');
+    });
+
+    passwordInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            verifyPassword();
+        }
+    });
+
+    // Initialize
+    setInterval(updateCountdown, 1000);
+    if (passwordVerified) {
+        setInterval(updateAddressCountdown, 1000);
+    }
